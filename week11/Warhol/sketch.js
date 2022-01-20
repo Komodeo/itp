@@ -1,25 +1,42 @@
 //define objects
 var vulva = {
+  posY: -5,
   majora: {
     height: 40,
-    width: 10
+    width: 10,
+    rgb: {
+      r: 234,
+      g: 154,
+      b: 183
+    }
   },
   minora: {
     height: 10,
-    width: 2
-  },
-  posY: -5
+    width: 2,
+    rgb: {
+      r: 255,
+      g: 135,
+      b: 183
+    }
+  }
 };
 
 var penis = {
-  headSize: 60,
+  head: {
+    size: 60,
+    rgb: {
+      r: 153,
+      g: 51,
+      b: 47
+    }
+  },
   tipSize: 5,
   posY: 0
 };
 
 var vignette = {
-  size: 130,
-  strokeSize: 50
+  size: 90,
+  strokeSize: 10
 };
 
 function setup() {
@@ -37,7 +54,7 @@ function draw() {
 
   //majora
   strokeWeight(0);
-  fill(234, 154, 183);
+  fill(vulva.majora.rgb.r, vulva.majora.rgb.g, vulva.majora.rgb.b);
   beginShape();
   vertex(centerX, centerY - vulva.majora.height + vulva.posY);
   vertex(centerX + vulva.majora.width, centerY + vulva.posY);
@@ -46,7 +63,7 @@ function draw() {
   endShape(CLOSE);
 
   //minora
-  fill(255, 135, 183);
+  fill(vulva.minora.rgb.r, vulva.minora.rgb.g, vulva.minora.rgb.b);
   beginShape();
   vertex(centerX, centerY - vulva.minora.height + vulva.posY);
   vertex(centerX + vulva.minora.width, centerY + vulva.posY);
@@ -55,8 +72,8 @@ function draw() {
   endShape(CLOSE);
 
   //penis
-  fill(153, 51, 47);
-  ellipse(centerX, centerY + penis.headSize / 2 + penis.posY, penis.headSize);
+  fill(penis.head.rgb.r, penis.head.rgb.g, penis.head.rgb.b);
+  ellipse(centerX, centerY + penis.head.size / 2 + penis.posY, penis.head.size);
   fill(0);
   ellipse(centerX, centerY + penis.tipSize / 2 + penis.posY, penis.tipSize);
 
