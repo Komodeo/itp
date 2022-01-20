@@ -62,6 +62,13 @@ function setup() {
 }
 
 function draw() {
+  //set number of rows and columns based on mouse position
+  grid.columns = winMouseX / grid.boxSize;
+  grid.rows = winMouseY / grid.boxSize;
+  //create canvas
+  createCanvas(grid.columns * grid.boxSize, grid.rows * grid.boxSize);
+  background(grid.rgb.r, grid.rgb.g, grid.rgb.b);
+
   //draw a box for each grid column
   for (var column = 0; column < grid.columns; column++) {
     //draw a box for each grid row
