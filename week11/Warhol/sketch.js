@@ -59,14 +59,6 @@ function setup() {
   //create canvas
   createCanvas(grid.columns * grid.boxSize, grid.rows * grid.boxSize);
   background(grid.rgb.r, grid.rgb.g, grid.rgb.b);
-
-  //draw a box for each grid column
-  for (var column = 0; column < grid.columns; column++) {
-    //draw a box for each grid row
-    for (var row = 0; row < grid.rows; row++) {
-
-    }
-  }
 }
 
 function draw() {
@@ -78,11 +70,7 @@ function draw() {
       var centerX = grid.boxSize / 2 + column * grid.boxSize;
       var centerY = grid.boxSize / 2 + row * grid.boxSize;
 
-      //draw background
       strokeWeight(0);
-      fill(grid.rgb.r, grid.rgb.g, grid.rgb.b);
-      // rect(centerX - grid.boxSize / 2, centerY - grid.boxSize / 2, grid.boxSize, grid.boxSize);
-
       //position vulva
       //majora
       fill(vulva.majora.rgb.r, vulva.majora.rgb.g, vulva.majora.rgb.b);
