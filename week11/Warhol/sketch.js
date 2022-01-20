@@ -45,8 +45,8 @@ var vignette = {
 };
 
 var grid = {
-  columns: 3,
-  rows: 3,
+  columns: 5,
+  rows: 12,
   boxSize: 100,
   rgb: {
     r: 252,
