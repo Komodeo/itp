@@ -37,19 +37,36 @@ var penis = {
 var vignette = {
   size: 90,
   strokeSize: 10,
-  grayscale: 0
+  rgb: {
+    r: 0,
+    g: 0,
+    b: 0
+  }
 };
 
 var grid = {
   columns: 3,
   rows: 3,
-  boxSize: 100
+  boxSize: 100,
+  rgb: {
+    r: 252,
+    g: 225,
+    b: 237
+  }
 };
 
 function setup() {
   //create canvas
   createCanvas(grid.columns * grid.boxSize, grid.rows * grid.boxSize);
-  background(252, 225, 237);
+  background(grid.rgb.r, grid.rgb.g, grid.rgb.b);
+
+  //draw a box for each grid column
+  for (var column = 0; column < grid.columns; column++) {
+    //draw a box for each grid row
+    for (var row = 0; row < grid.rows; row++) {
+
+    }
+  }
 }
 
 function draw() {
@@ -61,10 +78,13 @@ function draw() {
       var centerX = grid.boxSize / 2 + column * grid.boxSize;
       var centerY = grid.boxSize / 2 + row * grid.boxSize;
 
-      //position vulva
-
-      //majora
+      //draw background
       strokeWeight(0);
+      fill(grid.rgb.r, grid.rgb.g, grid.rgb.b);
+      // rect(centerX - grid.boxSize / 2, centerY - grid.boxSize / 2, grid.boxSize, grid.boxSize);
+
+      //position vulva
+      //majora
       fill(vulva.majora.rgb.r, vulva.majora.rgb.g, vulva.majora.rgb.b);
       beginShape();
       vertex(centerX, centerY - vulva.majora.height + vulva.posY);
@@ -72,7 +92,6 @@ function draw() {
       vertex(centerX, centerY + vulva.majora.height + vulva.posY);
       vertex(centerX - vulva.majora.width, centerY + vulva.posY);
       endShape(CLOSE);
-
       //minora
       fill(vulva.minora.rgb.r, vulva.minora.rgb.g, vulva.minora.rgb.b);
       beginShape();
@@ -90,7 +109,11 @@ function draw() {
 
       //vignette
       strokeWeight(vignette.strokeSize);
-      stroke(vignette.grayscale);
+      //set colors based on column and row
+      vignette.rgb.r = 255 - (column * 255 / (grid.columns - 1));
+      vignette.rgb.g = 255 - (row * 255 / (grid.rows - 1));
+      vignette.rgb.b = column * 255 / (grid.columns - 1);
+      stroke(vignette.rgb.r, vignette.rgb.g, vignette.rgb.b);
       noFill();
       ellipse(centerX, centerY, vignette.size);
     }
