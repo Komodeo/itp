@@ -1,12 +1,12 @@
 //define objects
 var vulva = {
   majora: {
-    height: 80,
-    width: 20
+    height: 40,
+    width: 10
   },
   minora: {
-    height: 20,
-    width: 5
+    height: 10,
+    width: 2
   }
 };
 
@@ -21,9 +21,24 @@ function draw() {
   var centerX = width / 2;
   var centerY = height / 2;
 
-  strokeWeight(1);
-  fill(255);
-  ellipse(centerX, centerY - vulva.majora.height / 2, 5, 5);
+  //majora
+  strokeWeight(0);
+  fill(234, 154, 183);
+  beginShape();
+  vertex(centerX, centerY - vulva.majora.height);
+  vertex(centerX + vulva.majora.width, centerY);
+  vertex(centerX, centerY + vulva.majora.height);
+  vertex(centerX - vulva.majora.width, centerY);
+  endShape(CLOSE);
+
+  //minora
+  fill(255, 135, 183);
+  beginShape();
+  vertex(centerX, centerY - vulva.minora.height);
+  vertex(centerX + vulva.minora.width, centerY);
+  vertex(centerX, centerY + vulva.minora.height);
+  vertex(centerX - vulva.minora.width, centerY);
+  endShape(CLOSE);
 }
 
 
