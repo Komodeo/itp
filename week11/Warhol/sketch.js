@@ -36,7 +36,8 @@ var penis = {
 
 var vignette = {
   size: 90,
-  strokeSize: 10
+  strokeSize: 10,
+  grayscale: 0
 };
 
 function setup() {
@@ -79,6 +80,7 @@ function draw() {
 
   //vignette
   strokeWeight(vignette.strokeSize);
+  stroke(vignette.grayscale);
   noFill();
   ellipse(centerX, centerY, vignette.size);
 }
