@@ -66,8 +66,8 @@ function setup() {
 
 function draw() {
   //set number of rows and columns based on mouse position
-  grid.columns = winMouseX / grid.boxSize;
-  grid.rows = winMouseY / grid.boxSize;
+  grid.columns = Math.ceil(winMouseX / grid.boxSize);
+  grid.rows = Math.ceil(winMouseY / grid.boxSize);
   //create canvas
   createCanvas(grid.columns * grid.boxSize, grid.rows * grid.boxSize);
   background(grid.rgb.r, grid.rgb.g, grid.rgb.b);
@@ -108,9 +108,9 @@ function draw() {
       //vignette
       strokeWeight(vignette.strokeSize);
       //set colors based on column and row
-      vignette.rgb.r = 255 - (column * 255 / (grid.columns - 1));
-      vignette.rgb.g = 255 - (row * 255 / (grid.rows - 1));
-      vignette.rgb.b = column * 255 / (grid.columns - 1);
+      vignette.rgb.r = 255 - constrain(column * 255 / (grid.columns - 1), 0, 255);
+      vignette.rgb.g = 255 - constrain(row * 255 / (grid.rows - 1), 0, 255);
+      vignette.rgb.b = constrain(column * 255 / (grid.columns + 1), 0, 255);
       stroke(vignette.rgb.r, vignette.rgb.g, vignette.rgb.b);
       noFill();
       ellipse(centerX, centerY, vignette.size);
