@@ -1,9 +1,23 @@
+//build grid
+var grid = {
+  columns: 5,
+  rows: 12,
+  boxSize: 50,
+  rgb: {
+    r: 252,
+    g: 225,
+    b: 237
+  }
+};
+
+scale = grid.boxSize / 100;
+
 //define objects
 var vulva = {
-  posY: -5,
+  posY: -5 * scale,
   majora: {
-    height: 40,
-    width: 10,
+    height: 40 * scale,
+    width: 10 * scale,
     rgb: {
       r: 234,
       g: 154,
@@ -11,8 +25,8 @@ var vulva = {
     }
   },
   minora: {
-    height: 10,
-    width: 2,
+    height: 10 * scale,
+    width: 2 * scale,
     rgb: {
       r: 255,
       g: 135,
@@ -23,35 +37,24 @@ var vulva = {
 
 var penis = {
   head: {
-    size: 60,
+    size: 60 * scale,
     rgb: {
       r: 153,
       g: 51,
       b: 47
     }
   },
-  tipSize: 5,
-  posY: 0
+  tipSize: 5 * scale,
+  posY: 0 * scale
 };
 
 var vignette = {
-  size: 90,
-  strokeSize: 10,
+  size: 90 * scale,
+  strokeSize: 10 * scale,
   rgb: {
     r: 0,
     g: 0,
     b: 0
-  }
-};
-
-var grid = {
-  columns: 5,
-  rows: 12,
-  boxSize: 100,
-  rgb: {
-    r: 252,
-    g: 225,
-    b: 237
   }
 };
 
