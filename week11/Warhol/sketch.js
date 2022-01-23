@@ -108,9 +108,9 @@ function draw() {
       //vignette
       strokeWeight(vignette.strokeSize);
       //set colors based on column and row
-      vignette.rgb.r = 255 - constrain(column * 255 / (grid.columns - 1), 0, 255);
-      vignette.rgb.g = 255 - constrain(row * 255 / (grid.rows - 1), 0, 255);
-      vignette.rgb.b = constrain(column * 255 / (grid.columns + 1), 0, 255);
+      vignette.rgb.r = map(1 - (column / (grid.columns - 0.999)), 0, 1, 0, 255); //red decreases from left to right
+      vignette.rgb.g = map(1 - (row / (grid.rows - 0.999)), 0, 1, 0, 255); //green decreases from top to bottom
+      vignette.rgb.b = map(column / grid.columns, 0, 1, 0, 255); //blue increases from left to right
       stroke(vignette.rgb.r, vignette.rgb.g, vignette.rgb.b);
       noFill();
       ellipse(centerX, centerY, vignette.size);
