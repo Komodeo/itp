@@ -23,20 +23,13 @@ function setup() {
             random(0, 255)
         );
         flowers.push({"base_x": flower.base_x, "base_y": flower.base_y, "stem_h": flower.stem_h, "col": flower.col});
-        // flowers[i].base_x = flower.base_x;
-        // flowers[i].base_y = flower.base_y;
-        // flowers[i].stem_h = flower.stem_h;
-        // flowers[i].col = flower.col;
     }
-}
 
-function draw() {
     background(150, 150, 250);
-    for (var i = 0; i < flowers.length; i++) {
+    for (i = 0; i < flowers.length; i++) {
         drawFlower(i);
     }
 }
-
 
 function drawFlower(_flower) {
     noFill();
@@ -53,7 +46,6 @@ function drawFlower(_flower) {
     ellipse(flowers[_flower].base_x - 45, flowers[_flower].base_y - flowers[_flower].stem_h, 70, 50);
     ellipse(flowers[_flower].base_x, flowers[_flower].base_y + 45 - flowers[_flower].stem_h, 50, 70);
     ellipse(flowers[_flower].base_x, flowers[_flower].base_y - 45 - flowers[_flower].stem_h, 50, 70);
-
 
     //flip the colour
     flowers[_flower].col = color(
