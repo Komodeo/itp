@@ -59,25 +59,29 @@ var Murderscene_Log_recordedDay = [11, 11, 13, 16, 16, 17, 18, 26, 28, 2, 9, 14,
 var Murderscene_Log_Killed_ = ['DRUSILLA WARMAN', 'ERMELINDA OORIN', 'JESSIA PORTOS', 'NICOLE ASHELY', 'JULIANA ADVERSANE', 'LESLEY MONKSFORD', 'JENIFFER DEAUVILLE', 'LOUISE ZETLAND', 'TU DAVISWOOD', 'MALINDA GOODBURY', 'LAVERNE JACQUELIN', 'MAJORIE JENI', 'LINETTE MOHWAWK', 'DARBY MYRLE', 'DEEDEE PHINNEY'];
 
 
-function preload()
-{
+function preload() {
 	countyMap = loadImage("map.png")
 }
 
-function setup()
-{
-  createCanvas(countyMap.width, countyMap.height);
+function setup() {
+	createCanvas(countyMap.width, countyMap.height);
 
-	image(countyMap, 0,0);
+	image(countyMap, 0, 0);
 
 	//add your code below here
 
-
+	// draw a DarkGoldenrod stroke vertex at each sighting location
+	stroke(184, 134, 11);
+	noFill();
+	beginShape();
+	for (i = 0; i < Fugitive_Sightings.locX.length; i++) {
+		vertex(Fugitive_Sightings.locX[i], Fugitive_Sightings.locY[i]);
+	}
+	endShape();
 
 
 	// code to draw the matches ( if any)
-	for(let i = 0 ; i < possibleMatches.length ; i++)
-	{
+	for (let i = 0; i < possibleMatches.length; i++) {
 		stroke(127);
 		strokeWeight(3);
 		line(possibleMatches[i].crime_x, possibleMatches[i].crime_y, possibleMatches[i].suspect_x, possibleMatches[i].suspect_y);
