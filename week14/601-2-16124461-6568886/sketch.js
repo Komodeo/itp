@@ -55,24 +55,28 @@ var murder_logbook = {
 	fatalityDetails: ['SUMMER CASIMERE', 'DEEDEE PHINNEY', 'LINETTE MOHWAWK', 'ERMELINDA OORIN', 'JESUS FORSLIN', 'RANDEE CROME', 'LOUISE ZETLAND', 'TU DAVISWOOD', 'PIERRE DORCEY', 'MAJORIE JENI', 'LESLEY MONKSFORD', 'JAUNITA JOYER', 'JESSIA PORTOS', 'LAVERNE JACQUELIN'],
 };
 
-function preload()
-{
+function preload() {
 	countyMap = loadImage("map.png")
 }
 
-function setup()
-{
-  createCanvas(countyMap.width, countyMap.height);
+function setup() {
+	createCanvas(countyMap.width, countyMap.height);
 
-	image(countyMap, 0,0);
+	image(countyMap, 0, 0);
 
 	//add your code below here
 
-
+	//draw SeaGreen stroke vertexes at each sighting location
+	stroke(46, 139, 87);
+	noFill();
+	beginShape();
+	for (i = 0; i < fry_data_Coord_X.length; i++) {
+		vertex(fry_data_Coord_X[i], fry_data_Coord_Y[i]);
+	}
+	endShape();
 
 	// code to draw the matches ( if any)
-	for(let i = 0 ; i < possibleMatches.length ; i++)
-	{
+	for (let i = 0; i < possibleMatches.length; i++) {
 		stroke(127);
 		strokeWeight(3);
 		line(possibleMatches[i].crime_x, possibleMatches[i].crime_y, possibleMatches[i].suspect_x, possibleMatches[i].suspect_y);
