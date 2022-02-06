@@ -30,20 +30,22 @@ var KillerLog = {
 	coord_y: [175, 158, 192, 154, 133, 168, 149, 139, 168, 133, 159, 144, 225, 228, 230, 277, 267, 291, 278, 274, 318, 280],
 };
 
-function preload()
-{
-	countyMap = loadImage("map.png")
+function preload() {
+	countyMap = loadImage("map.png");
 }
 
-function setup()
-{
-  createCanvas(countyMap.width, countyMap.height);
+function setup() {
+	createCanvas(countyMap.width, countyMap.height);
 
-	image(countyMap, 0,0);
+	image(countyMap, 0, 0);
 
 	//add your code below here
 
-
+	stroke(147, 112, 219);
+	noFill();
+	for (i = 0; i < KillerLog.coord_x.length; i++) {
+		ellipse(KillerLog.coord_x[i], KillerLog.coord_y[i], 5);
+	}
 }
 
 //We are not using the draw function this time
