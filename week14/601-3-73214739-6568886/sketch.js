@@ -60,7 +60,7 @@ var Murderscene_Log_Killed_ = ['DRUSILLA WARMAN', 'ERMELINDA OORIN', 'JESSIA POR
 
 
 function preload() {
-	countyMap = loadImage("map.png")
+	countyMap = loadImage("map.png");
 }
 
 function setup() {
@@ -79,6 +79,12 @@ function setup() {
 	}
 	endShape();
 
+	// draw SeaGreen fill rectangles centered over each crime location
+	noStroke();
+	fill(46, 139, 87);
+	for (i = 0; i < Murderscene_Log_Pos_X.length; i++) {
+		rect(Murderscene_Log_Pos_X[i] - 3, Murderscene_Log_Pos_Y[i] - 3, 6, 6);
+	}
 
 	// code to draw the matches ( if any)
 	for (let i = 0; i < possibleMatches.length; i++) {
