@@ -82,6 +82,16 @@ function setup() {
 		ellipse(murder_logbook.locationX[i], murder_logbook.locationY[i], 5);
 	}
 
+	//check if sighting location is within 44 pixels of crime location
+	for (i = 0; i < fry_data_Coord_X.length; i++) {
+		for (j = 0; j < murder_logbook.locationX.length; j++) {
+			if (dist(fry_data_Coord_X[i], fry_data_Coord_Y[i], murder_logbook.locationX[j], murder_logbook.locationY[j]) < 44) {
+				//push possible matches
+				possibleMatches.push({"suspect_x": fry_data_Coord_X[i], "suspect_y": fry_data_Coord_Y[i], "crime_x": murder_logbook.locationX[j], "crime_y": murder_logbook.locationY[j], "victimName": murder_logbook.fatalityDetails[j]});
+			}
+		}
+	}
+
 	// code to draw the matches ( if any)
 	for (let i = 0; i < possibleMatches.length; i++) {
 		stroke(127);
