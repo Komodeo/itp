@@ -86,6 +86,19 @@ function setup() {
 		rect(Murderscene_Log_Pos_X[i] - 3, Murderscene_Log_Pos_Y[i] - 3, 6, 6);
 	}
 
+	// compare sightings to crimes
+	for (i = 0; i < Fugitive_Sightings.locX.length; i++) {
+		for (j = 0; j < Murderscene_Log_Pos_X.length; j++) {
+			// check if distance is less than 52 pixels
+			if (dist(Fugitive_Sightings.locX[i], Fugitive_Sightings.locY[i], Murderscene_Log_Pos_X[j], Murderscene_Log_Pos_Y[j]) < 52 &&
+				// check if sighting was within 1 day of crime
+				abs(Fugitive_Sightings.recordedDay[i] - Murderscene_Log_recordedDay[j]) <= 1) {
+				//push possible matches
+				possibleMatches.push({ "suspect_x": Fugitive_Sightings.locX[i], "suspect_y": Fugitive_Sightings.locY[i], "crime_x": Murderscene_Log_Pos_X[j], "crime_y": Murderscene_Log_Pos_Y[j], "victimName": Murderscene_Log_Killed_[j] });
+			}
+		}
+	}
+
 	// code to draw the matches ( if any)
 	for (let i = 0; i < possibleMatches.length; i++) {
 		stroke(127);
