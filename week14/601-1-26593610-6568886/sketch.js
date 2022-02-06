@@ -41,20 +41,31 @@ var crimeData_PointX = [403, 402, 427, 646, 639, 830, 809, 844, 802, 683, 552, 6
 var crimeData_PointY = [401, 360, 403, 284, 264, 434, 443, 496, 350, 413, 464, 498, 562, 603, 225, 282, 392, 283, 359, 436, 455, 565, 508, 556, 737];
 
 
-function preload()
-{
-	countyMap = loadImage("map.png")
+function preload() {
+	countyMap = loadImage("map.png");
 }
 
-function setup()
-{
-  createCanvas(countyMap.width, countyMap.height);
+function setup() {
+	createCanvas(countyMap.width, countyMap.height);
 
-	image(countyMap, 0,0);
+	image(countyMap, 0, 0);
 
 	//add your code below here
 
+	//draw a Coral stroke triangle centered at each sighting location
+	stroke(255, 127, 80);
+	noFill();
+	for (i = 0; i < fugitiveLog_point_x.length; i++) {
+		triangle(fugitiveLog_point_x[i], fugitiveLog_point_y[i] - 5,
+			fugitiveLog_point_x[i] + 5, fugitiveLog_point_y[i] + 3,
+			fugitiveLog_point_x[i] - 5, fugitiveLog_point_y[i] + 3);
+	}
 
+	//draw a Chartreuse stroke ellipse at each crime location
+	stroke(127, 255, 0);
+	for (i = 0; i < crimeData_PointX.length; i++) {
+		ellipse(crimeData_PointX[i], crimeData_PointY[i], 5);
+	}
 
 }
 
