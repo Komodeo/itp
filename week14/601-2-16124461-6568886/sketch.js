@@ -75,6 +75,13 @@ function setup() {
 	}
 	endShape();
 
+	//draw DarkOrange fill ellipses at each crime location
+	noStroke();
+	fill(255, 140, 0);
+	for (i = 0; i < murder_logbook.locationX.length; i++) {
+		ellipse(murder_logbook.locationX[i], murder_logbook.locationY[i], 5);
+	}
+
 	// code to draw the matches ( if any)
 	for (let i = 0; i < possibleMatches.length; i++) {
 		stroke(127);
