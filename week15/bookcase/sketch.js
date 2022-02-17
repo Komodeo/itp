@@ -9,7 +9,9 @@ var bookcase = [["Later", "Echo", "The Outsider", "The Great Hunt (The Wheel of 
 function setup() {
 	createCanvas(800, 600);
 
+	// Call functions to print to console
 	firstBook();
+	totalBooks();
 }
 
 function draw() {
@@ -19,7 +21,19 @@ function draw() {
 // Print the first book on each shelf to the console
 function firstBook() {
 	console.log("The first book on each shelf: ");
-	for (i=0; i < bookcase.length; i++) {
+	for (i = 0; i < bookcase.length; i++) {
 		console.log(bookcase[i][0]);
 	}
+}
+
+// Print the total number of books to the console
+function totalBooks() {
+	console.log("The total number of books is: ");
+	var total = 0;
+	for (shelf = 0; shelf < bookcase.length; shelf++) {
+		for (book = 0; book < bookcase[shelf].length; book++) {
+			total++;
+		}
+	}
+	console.log(total);
 }
