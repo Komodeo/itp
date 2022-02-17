@@ -20,15 +20,13 @@ you need to give the highlight function 4 arguments the robot object, and red, g
 
 var robots = [];
 
-function setup()
-{
+function setup() {
 	createCanvas(1000, 1000);
 	//lists of first and second names to select from
 	fillRobots();
 
 	background(20);
-	for (var i = 0; i < robots.length; i++)
-	{
+	for (var i = 0; i < robots.length; i++) {
 		drawRobot(robots[i].physical);
 	}
 
@@ -50,9 +48,8 @@ function setup()
 
 }
 
-function highlight(robot, r, g, b)
-{
-	push()
+function highlight(robot, r, g, b) {
+	push();
 	stroke(r, g, b);
 	strokeWeight(4);
 	noFill();
@@ -61,45 +58,42 @@ function highlight(robot, r, g, b)
 }
 
 //fill the robots array with a variety of complex properties
-function fillRobots()
-{
+function fillRobots() {
 	var firstNames = ["Asad", "Agatha", "Benny", "Beau", "Carol", "Colin", "Data", "Delia", "Edward", "Ethal", "Freddy", "Fiona", "Georgina", "Greg", "Hal", "Holly", "Ishmail", "India", "Jamie", "Joanna", "Kym", "Kelly", "liam", "Leanne", "Marvin", "Michaela", "Nicholas", "Niamh", "Oscar", "Olivia", "Quentin", "Queenie", "Richard", "Rebecca", "Simon", "Simone", "Thomas", "Tilly", "Ulysses", "Ursula", "Vinny", "Violet", "William", "Winifred", "Xander", "Xanthe", "Yves", "Yvonne", "Zach", "Zara"];
 
-	var secondNames = ["Anstead", "Brown", "Chan", "Depp", "English", "Forth", "Goodwin", "Holmes", "Iqbal", "Jameson", "Katan", "Lingard", "Munster", "Nicoles", "Oscar", "Quest", "Reagan", "Shiffman", "Tolworth", "Underwood", "Venn", "Walsh", "Xu", "Young", "Zerdin"]
+	var secondNames = ["Anstead", "Brown", "Chan", "Depp", "English", "Forth", "Goodwin", "Holmes", "Iqbal", "Jameson", "Katan", "Lingard", "Munster", "Nicoles", "Oscar", "Quest", "Reagan", "Shiffman", "Tolworth", "Underwood", "Venn", "Walsh", "Xu", "Young", "Zerdin"];
 
 	//fill the robots array
-	for (var i = 0; i < 64; i++)
-	{
+	for (var i = 0; i < 64; i++) {
 		//give the robot a random name
 		var fn = firstNames[parseInt(random(0, firstNames.length - 1))];
 		var sn = secondNames[parseInt(random(0, secondNames.length - 1))];
 
 		//set the robots unique skills - deduct randomly from the list so the robot has 4 skills
 		var abilities = ["clean house", "make bed", "babysit", "cook", "school run", "laundry", "grow vegetables", "charity work", "darn socks", "do shopping", "take out rubbish", "feed the cat", "mow lawn", "paint fence"];
-		while (abilities.length > 4)
-		{
+		while (abilities.length > 4) {
 			abilities.splice(random(0, abilities.length), 1);
 		}
 
 		//add the robot to the robots array setting random properties for remaining values
 		robots.push(
-		{
-			firstName: fn,
-			secondName: sn,
-			iq: round(random(300, 3000)),
-			serialNumber: round(random(10000, 100000)),
-			abilities: abilities,
-			physical:
 			{
-				r: round(random(0, 255)),
-				g: round(random(0, 255)),
-				b: round(random(0, 255)),
-				headWidth: round(random(60, 100)),
-				x: 20 + i % 8 * 120,
-				y: 20 + floor(i / 8) * 120
-			}
+				firstName: fn,
+				secondName: sn,
+				iq: round(random(300, 3000)),
+				serialNumber: round(random(10000, 100000)),
+				abilities: abilities,
+				physical:
+				{
+					r: round(random(0, 255)),
+					g: round(random(0, 255)),
+					b: round(random(0, 255)),
+					headWidth: round(random(60, 100)),
+					x: 20 + i % 8 * 120,
+					y: 20 + floor(i / 8) * 120
+				}
 
-		})
+			});
 	}
 
 	//pick a random robot and make them go rouge
@@ -108,8 +102,7 @@ function fillRobots()
 
 //draw a single robot to the canvas
 //takes a robots physical object and it's first and last name argument
-function drawRobot(physical)
-{
+function drawRobot(physical) {
 	//draw the robots
 	strokeWeight(2);
 	stroke(0);
