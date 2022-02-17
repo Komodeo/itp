@@ -14,6 +14,7 @@ function setup() {
 	totalBooks();
 	allTheBooks();
 	particularShelf(floor(random() * bookcase.length)); //print books from a random shelf
+	findBookLocation(randomBookTitle()); //print a random book's location
 }
 
 function draw() {
@@ -56,4 +57,24 @@ function particularShelf(shelf) {
 	for (book = 0; book < bookcase[shelf].length; book++) {
 		console.log(bookcase[shelf][book]);
 	}
+}
+
+// Print the location of a specific book (by title) to the console
+function findBookLocation(title) {
+	for (shelf = 0; shelf < bookcase.length; shelf++) {
+		for (book = 0; book < bookcase[shelf].length; book++) {
+			if(title == bookcase[shelf][book]) {
+				console.log("// The location of " + title + " is:");
+				console.log("Shelf " + shelf + ", Book " + book);
+				return bookcase[shelf][book];
+			}
+		}
+	}
+}
+
+// Return a random book title
+function randomBookTitle() {
+	var randomShelf = floor(random() * bookcase.length);
+	var randomBook = floor(random() * bookcase[randomShelf].length);
+	return bookcase[randomShelf][randomBook];
 }
