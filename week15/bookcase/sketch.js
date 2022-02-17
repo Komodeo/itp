@@ -8,10 +8,18 @@ var bookcase = [["Later", "Echo", "The Outsider", "The Great Hunt (The Wheel of 
 
 function setup() {
 	createCanvas(800, 600);
+
+	firstBook();
 }
-
-
 
 function draw() {
 
+}
+
+// Print the first book on each shelf to the console
+function firstBook() {
+	console.log("The first book on each shelf: ");
+	for (i=0; i < bookcase.length; i++) {
+		console.log(bookcase[i][0]);
+	}
 }
