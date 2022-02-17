@@ -36,11 +36,13 @@ function setup() {
 	console.log("//1. Print all the robot names to the console - first name followed by surname");
 	for (i = 0; i < robots.length; i++) {
 		console.log(robots[i].firstName + " " + robots[i].secondName);
+		//2. Add to the above so it stops printing names if you find a robot with the surname Katan. Highlight the robot in green
+		if (robots[i].secondName == "Katan") {
+			console.log("//2. Stop printing names if you find a robot with the surname Katan. Highlight the robot in green.");
+			highlight(robots[i], 0, 128, 0);
+			break;
+		}
 	}
-
-	//2. Add to the above so it stops printing names if you find a robot with the surname Katan. Highlight the robot in green
-
-
 
 	//3. Select the robot with the highest IQ and highlight it in blue. Also, print it's name to the console
 
