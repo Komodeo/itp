@@ -12,6 +12,7 @@ function setup() {
 	// Call functions to print to console
 	firstBook();
 	totalBooks();
+	allTheBooks();
 }
 
 function draw() {
@@ -36,4 +37,14 @@ function totalBooks() {
 		}
 	}
 	console.log(total);
+}
+
+// Print all the books to the console
+function allTheBooks() {
+	console.log("Here is a list of ALL THE BOOKS: ");
+	for (shelf = 0; shelf < bookcase.length; shelf++) {
+		for (book = 0; book < bookcase[shelf].length; book++) {
+			console.log(bookcase[shelf][book]);
+		}
+	}
 }
