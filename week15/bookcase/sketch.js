@@ -13,6 +13,7 @@ function setup() {
 	firstBook();
 	totalBooks();
 	allTheBooks();
+	particularShelf(floor(random() * bookcase.length)); //print books from a random shelf
 }
 
 function draw() {
@@ -21,15 +22,15 @@ function draw() {
 
 // Print the first book on each shelf to the console
 function firstBook() {
-	console.log("The first book on each shelf: ");
-	for (i = 0; i < bookcase.length; i++) {
-		console.log(bookcase[i][0]);
+	console.log("// The first book on each shelf is:");
+	for (shelf = 0; shelf < bookcase.length; shelf++) {
+		console.log(bookcase[shelf][0]);
 	}
 }
 
 // Print the total number of books to the console
 function totalBooks() {
-	console.log("The total number of books is: ");
+	console.log("// The total number of books is:");
 	var total = 0;
 	for (shelf = 0; shelf < bookcase.length; shelf++) {
 		for (book = 0; book < bookcase[shelf].length; book++) {
@@ -41,10 +42,18 @@ function totalBooks() {
 
 // Print all the books to the console
 function allTheBooks() {
-	console.log("Here is a list of ALL THE BOOKS: ");
+	console.log("// Here is a list of ALL THE BOOKS:");
 	for (shelf = 0; shelf < bookcase.length; shelf++) {
 		for (book = 0; book < bookcase[shelf].length; book++) {
 			console.log(bookcase[shelf][book]);
 		}
+	}
+}
+
+// Print the books on a particular shelf to the console
+function particularShelf(shelf) {
+	console.log("// Here is a list of the books on shelf " + shelf + ":");
+	for (book = 0; book < bookcase[shelf].length; book++) {
+		console.log(bookcase[shelf][book]);
 	}
 }
