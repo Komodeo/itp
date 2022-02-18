@@ -119,12 +119,18 @@ function FollowingCriminal() {
 	 - for a match, StopCriminal should be called, otherwise call CrossLanes.
 	*/
 	var aheadCar = SearchVehicleIsAhead(Investigator_Car);
+	var aheadCarIndex;
+	for (i = 0; i < VehicleObject_Array.length; i++) {
+		if (aheadCar == VehicleObject_Array[i]) {
+			aheadCarIndex = i;
+		}
+	}
 	if (Investigator_Car.Tailing_Criminal) {
 		Investigator_Car.Accel_Amt *= 1.001;
 		Investigator_Car.Accel_Amt = min(Investigator_Car.Accel_Amt, 6);
 		if (aheadCar) {
 			if (aheadCar.Number_Plate == "EZP6IQ") {
-				StopCriminal(aheadCar);
+				StopCriminal(aheadCarIndex);
 			}
 			else {
 				CrossLanes(Investigator_Car);
@@ -141,10 +147,10 @@ function StopCriminal(car_obj) {
 	 - set the Apprehending_Criminal property of Investigator_Car to true.
 	 - set the Accel_Amt properties of both vehicles to zero.
 	*/
-	car_obj.isApprehended = true;
 	Investigator_Car.Apprehending_Criminal = true;
-	car_obj.Accel_Amt = 0;
 	Investigator_Car.Accel_Amt = 0;
+	VehicleObject_Array[car_obj].isApprehended = true;
+	VehicleObject_Array[car_obj].Accel_Amt = 0;
 }
 
 
