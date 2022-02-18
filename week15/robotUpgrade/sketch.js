@@ -32,6 +32,16 @@ function setup() {
 
 	//add your selection code here:
 
+	//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print it's name to the console
+	console.log("//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print its name to the console.");
+	console.log("The following robots have faces narrower than 70:");
+	for (i = 0; i < robots.length; i++) {
+		if (robots[i].physical.headWidth < 70) {
+			highlight(robots[i], 255, 255, 0);
+			console.log(robots[i].firstName + " " + robots[i].secondName);
+		}
+	}
+	
 	//1. Print all the robot names to the console - first name followed by surname
 	console.log("//1. Print all the robot names to the console. First name followed by surname.");
 	console.log("//2. Stop printing names if you find a robot with the surname Katan. Highlight the robot in green.");
@@ -89,16 +99,6 @@ function setup() {
 	highlight(rogueRobot, 255, 0, 0);
 	console.log("//5. Find the robot who wants to destroy humanity. Highlight it in red. Also, print its name to the console.");
 	console.log("The robot who wants to destroy humanity is " + rogueRobot.firstName + " " + rogueRobot.secondName + ".");
-
-	//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print it's name to the console
-	console.log("//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print its name to the console.");
-	console.log("The following robots have faces narrower than 70:");
-	for (i = 0; i < robots.length; i++) {
-		if (robots[i].physical.headWidth < 70) {
-			highlight(robots[i], 255, 255, 0);
-			console.log(robots[i].firstName + " " + robots[i].secondName);
-		}
-	}
 }
 
 function highlight(robot, r, g, b) {
