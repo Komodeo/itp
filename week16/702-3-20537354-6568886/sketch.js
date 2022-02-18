@@ -101,6 +101,10 @@ function FindCriminal() {
 	 - if a match is found then the object of the car in question is returned.
 	 - otherwise return false.
 	*/
+	var parallelVehicle = CheckVehicleIsParallel(Investigator_Car);
+	if (parallelVehicle && VehicleObject_Array[parallelVehicle].Number_Plate == "EZP6IQ") {
+		return VehicleObject_Array[parallelVehicle];
+	}
 }
 
 
