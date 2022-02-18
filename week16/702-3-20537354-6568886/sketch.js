@@ -83,6 +83,12 @@ function CheckVehicleIsParallel(target_vehicle) {
 	 - traverse VehicleObject_Array and determine if any of the cars are parallel with target_vehicle.
 	 - if a car is found to be parallel to target_vehicle then return the index of that car object.
 	 - cars are considered parallel if the absolute difference between their Miles_Amnt properties is less than 25 px and they have non-matching X_Coordinate properties	*/
+	for (i = 0; i < VehicleObject_Array.length; i++) {
+		if (abs(VehicleObject_Array[i].Miles_Amnt - target_vehicle.Miles_Amnt) < 25 &&
+			VehicleObject_Array[i].X_Coordinate != target_vehicle.X_Coordinate) {
+			return i;
+		}
+	}
 }
 
 
