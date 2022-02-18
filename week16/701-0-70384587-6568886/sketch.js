@@ -66,7 +66,11 @@ function setup()
 
 // Declare your function here
 
-
+function matchSuspect(suspectObj) {
+	if (suspectObj.coat == "green army coat" && suspectObj.hair == "thick black" && suspectObj.eyes == "grey") {
+		return true;
+	}
+}
 
 function draw()
 {
