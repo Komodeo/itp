@@ -24,8 +24,7 @@ HINT: make sure you take a look at the initialisation of DetectiveCarObject to u
 
 ///////////////////////// HELPER FUNCTIONS /////////////////////
 
-function MoveVehicle()
-{
+function MoveVehicle() {
 	/*
 	This function should do the following: 
 	 - increment DetectiveCarObject's DistAmt property by its GasAmt property 
@@ -33,6 +32,10 @@ function MoveVehicle()
 	 - use the constrain function to constrain DetectiveCarObject's EngineVibrateVal property to values between 0.04 and 1.04
 	 - call the DriveEngine function passing DetectiveCarObject as an argument
 	*/
+	DetectiveCarObject.DistAmt += DetectiveCarObject.GasAmt;
+	DetectiveCarObject.EngineVibrateVal += random(-0.05, 0.05);
+	DetectiveCarObject.EngineVibrateVal = constrain(DetectiveCarObject.EngineVibrateVal, 0.04, 1.04);
+	DriveEngine(DetectiveCarObject);
 }
 
 
@@ -45,18 +48,16 @@ var roadLeftEdge = 200;
 var carImages = {};
 
 
-function preload()
-{
+function preload() {
 	carImages.detective = loadImage("cars/detective.png");
 }
 
-function setup()
-{
-	createCanvas(800,800);
+function setup() {
+	createCanvas(800, 800);
 
-	DetectiveCarObject = 
+	DetectiveCarObject =
 	{
-		XCoordinate: roadLeftEdge + roadWidth/4,
+		XCoordinate: roadLeftEdge + roadWidth / 4,
 		YCoordinate: 300,
 		DistAmt: 0,
 		GasAmt: 3,
@@ -71,8 +72,7 @@ function setup()
 
 
 
-function draw()
-{
+function draw() {
 	background(0);
 
 
@@ -85,65 +85,57 @@ function draw()
 
 /////////////////////////DRAWING FUNCTIONS////////////////////////
 
-function drawRoad()
-{
+function drawRoad() {
 	stroke(100);
 	fill(50);
-	rect(roadLeftEdge,0,roadWidth,800);
+	rect(roadLeftEdge, 0, roadWidth, 800);
 	stroke(255);
 
-	for(var i = -1; i < 20; i++)
-	{
+	for (var i = -1; i < 20; i++) {
 		line(
-		roadLeftEdge + roadWidth/2 , i * 100 + (DetectiveCarObject.DistAmt%100),
-		roadLeftEdge + roadWidth/2 , i * 100 + 70 + (DetectiveCarObject.DistAmt%100)
+			roadLeftEdge + roadWidth / 2, i * 100 + (DetectiveCarObject.DistAmt % 100),
+			roadLeftEdge + roadWidth / 2, i * 100 + 70 + (DetectiveCarObject.DistAmt % 100)
 		);
 	}
 }
 
-function drawCars()
-{
+function drawCars() {
 	//draw the detective car
 
 	image
 	drawExhaust(DetectiveCarObject);
 	image
-	(
-		carImages["detective"],
-		DetectiveCarObject.XCoordinate - carImages["detective"].width/2 + random(-DetectiveCarObject.EngineVibrateVal, DetectiveCarObject.EngineVibrateVal),
-		DetectiveCarObject.YCoordinate + random(-DetectiveCarObject.EngineVibrateVal, DetectiveCarObject.EngineVibrateVal)
-	);
+		(
+			carImages["detective"],
+			DetectiveCarObject.XCoordinate - carImages["detective"].width / 2 + random(-DetectiveCarObject.EngineVibrateVal, DetectiveCarObject.EngineVibrateVal),
+			DetectiveCarObject.YCoordinate + random(-DetectiveCarObject.EngineVibrateVal, DetectiveCarObject.EngineVibrateVal)
+		);
 
 }
 
-function DriveEngine(car)
-{
+function DriveEngine(car) {
 
-	car.exhaust.push({size: 2, x: car.XCoordinate, y: car.YCoordinate + carImages[car.VehicleCategory].height});
+	car.exhaust.push({ size: 2, x: car.XCoordinate, y: car.YCoordinate + carImages[car.VehicleCategory].height });
 
-	for(var i = car.exhaust.length -1; i >= 0 ; i--)
-	{
+	for (var i = car.exhaust.length - 1; i >= 0; i--) {
 
-		car.exhaust[i].y  += max(0.75, car.GasAmt/3);
-		car.exhaust[i].x += random(-1,1);
+		car.exhaust[i].y += max(0.75, car.GasAmt / 3);
+		car.exhaust[i].x += random(-1, 1);
 		car.exhaust[i].size += 0.5;
 
-		if(car.exhaust[i].y  > height)
-		{
-			car.exhaust.splice(i,1);
+		if (car.exhaust[i].y > height) {
+			car.exhaust.splice(i, 1);
 		}
 	}
 }
 
 
-function drawExhaust(car)
-{
-		noStroke();
-		for(var i = 0; i < car.exhaust.length; i++)
-		{
-				var alpha = map(car.exhaust[i].size, 0, 40, 50,0);
-				fill(125,alpha);
-				ellipse(car.exhaust[i].x + 20, car.exhaust[i].y , car.exhaust[i].size);
+function drawExhaust(car) {
+	noStroke();
+	for (var i = 0; i < car.exhaust.length; i++) {
+		var alpha = map(car.exhaust[i].size, 0, 40, 50, 0);
+		fill(125, alpha);
+		ellipse(car.exhaust[i].x + 20, car.exhaust[i].y, car.exhaust[i].size);
 
-		}
+	}
 }
