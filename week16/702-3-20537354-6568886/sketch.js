@@ -66,6 +66,14 @@ function SearchVehicleIsAhead(target_car) {
 	 - use the Number_Plate property of each car to ignore cars that match target_car.
 	 - if you find a car that matches these requirements then return the car object. Otherwise return false.
 	*/
+	for (i = 0; i < VehicleObject_Array.length; i++) {
+		if (VehicleObject_Array[i].X_Coordinate == target_car.X_Coordinate &&
+			VehicleObject_Array[i].Miles_Amnt - target_car.Miles_Amnt > 0 &&
+			VehicleObject_Array[i].Miles_Amnt - target_car.Miles_Amnt < 200 &&
+			VehicleObject_Array[i].Number_Plate != target_car.Number_Plate) {
+			return VehicleObject_Array[i];
+		}
+	}
 }
 
 
