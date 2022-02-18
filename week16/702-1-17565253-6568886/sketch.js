@@ -34,6 +34,10 @@ function move_vehicle()
 	 - use the constrain function to constrain investigatorVehicleObject's rumbleVal property to values between 0.1 and 0.84
 	 - call the turn_car_motor function passing investigatorVehicleObject as an argument
 	*/
+	investigatorVehicleObject.distanceAmount += investigatorVehicleObject.accelValue;
+	investigatorVehicleObject.rumbleVal += random(-0.07, 0.07);
+	investigatorVehicleObject.rumbleVal = constrain(investigatorVehicleObject.rumbleVal, 0.1, 0.84);
+	turn_car_motor(investigatorVehicleObject);
 }
 
 
@@ -46,6 +50,12 @@ function move_lanes(car_obj)
 	 - use laneCoordinateA and laneCoordinateB to effect the change.
 	 hint: You will need to modify the xPos property of car_obj.
 	*/
+	if (car_obj.xPos == laneCoordinateA) {
+		car_obj.xPos = laneCoordinateB;
+	}
+	else {
+		car_obj.xPos = laneCoordinateA;
+	}
 }
 
 
@@ -57,6 +67,11 @@ function check_infront( vehicle )
 	 - do this by traversing vehiclesList and comparing each car's distanceAmount property to that of vehicle.
 	 - if you find a car that matches these requirements then return the index representing the car's position in vehiclesList. Otherwise return false.
 	*/
+	for (i = 0; i < vehiclesList.length; i++) {
+		if (vehicle.xPos == vehiclesList[i].xPos && vehiclesList[i].distanceAmount - vehicle.distanceAmount > 0 && vehiclesList[i].distanceAmount - vehicle.distanceAmount < 200) {
+			return i;
+		}
+	}
 }
 
 
