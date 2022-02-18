@@ -31,7 +31,7 @@ It all started when I was exiting the store. That's when I noticed them. I remem
 */
 
 var suspectsArray = [
-	{ 
+	{
 		"name": "KITTY MYRLE",
 		"tattoo": "dragon",
 		"coat": "green jacket",
@@ -39,7 +39,7 @@ var suspectsArray = [
 		"weight": 68,
 		"age": 42
 	},
-	{ 
+	{
 		"name": "NICOLE WILLMAR",
 		"tattoo": "anchor",
 		"coat": "white fur coat",
@@ -47,7 +47,7 @@ var suspectsArray = [
 		"weight": 71,
 		"age": 43
 	},
-	{ 
+	{
 		"name": "JULIANA TINTLE",
 		"tattoo": "chinese lettering",
 		"coat": "blue overcoat",
@@ -55,7 +55,7 @@ var suspectsArray = [
 		"weight": 73,
 		"age": 45
 	},
-	{ 
+	{
 		"name": "TAMICA SYMMES",
 		"tattoo": "ox",
 		"coat": "green army coat",
@@ -63,7 +63,7 @@ var suspectsArray = [
 		"weight": 100,
 		"age": 63
 	},
-	{ 
+	{
 		"name": "MALINDA MOHWAWK",
 		"tattoo": "jellyfish",
 		"coat": "black overcoat",
@@ -77,31 +77,34 @@ var myFont;
 var backgroundImg;
 
 function preload() {
-  myFont = loadFont('SpecialElite.ttf');
-  backgroundImg = loadImage("Background.png");
+	myFont = loadFont('SpecialElite.ttf');
+	backgroundImg = loadImage("Background.png");
 }
 
-function setup()
-{
-	createCanvas(640,480);
+function setup() {
+	createCanvas(640, 480);
 	textFont(myFont);
 }
 
 // Declare your function here
 
+function checkSuspectTraits(suspectObj) {
+	if (suspectObj.tattoo == "anchor" && suspectObj.weight > 68 && suspectObj.coat == "white fur coat" && suspectObj.age > 38 && suspectObj.expression == "depressed") {
+		return true;
+	}
+}
 
-function draw()
-{
-  //You don't need to alter this code
-  image(backgroundImg, 0, 0);
+function draw() {
+	//You don't need to alter this code
+	image(backgroundImg, 0, 0);
 
-  for(let i = 0 ; i < suspectsArray.length; i++){
-    if(checkSuspectTraits(suspectsArray[i]) == true){
-      fill(255,0,0);
-      text(suspectsArray[i].name + " is guilty!", 60, 60 + i * 20);
-    }else{
-      fill(0,155,0);
-      text(suspectsArray[i].name + " is not guilty", 60, 60 + i * 20 );
-    }
-  }
+	for (let i = 0; i < suspectsArray.length; i++) {
+		if (checkSuspectTraits(suspectsArray[i]) == true) {
+			fill(255, 0, 0);
+			text(suspectsArray[i].name + " is guilty!", 60, 60 + i * 20);
+		} else {
+			fill(0, 155, 0);
+			text(suspectsArray[i].name + " is not guilty", 60, 60 + i * 20);
+		}
+	}
 }
