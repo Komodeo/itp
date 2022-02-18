@@ -34,22 +34,28 @@ function setup() {
 
 	//1. Print all the robot names to the console - first name followed by surname
 	console.log("//1. Print all the robot names to the console. First name followed by surname.");
+	console.log("//2. Stop printing names if you find a robot with the surname Katan. Highlight the robot in green.");
+	var katanRobot = null;
 	for (i = 0; i < robots.length; i++) {
 		console.log(robots[i].firstName + " " + robots[i].secondName);
 		//2. Add to the above so it stops printing names if you find a robot with the surname Katan. Highlight the robot in green
 		if (robots[i].secondName == "Katan") {
-			console.log("//2. Stop printing names if you find a robot with the surname Katan. Highlight the robot in green.");
-			highlight(robots[i], 0, 128, 0);
+			katanRobot = robots[i];
+			console.log("The first robot with the surname Katan is " + katanRobot.firstName + " " + katanRobot.secondName + ".");
+			highlight(katanRobot, 0, 128, 0);
 			break;
 		}
 	}
+	if (katanRobot == null) {
+		console.log("There is no robot with the surname Katan.");
+	}
 
 	//3. Select the robot with the highest IQ and highlight it in blue. Also, print it's name to the console
-	var highestIQ = 0;
+	var highestIQnumber = 0;
 	var highestIQrobot;
 	for (i = 0; i < robots.length; i++) {
-		if (robots[i].iq > highestIQ) {
-			highestIQ = robots[i].iq;
+		if (robots[i].iq > highestIQnumber) {
+			highestIQnumber = robots[i].iq;
 			highestIQrobot = robots[i];
 		}
 	}
@@ -58,6 +64,17 @@ function setup() {
 	console.log("The robot with the highest IQ is " + highestIQrobot.firstName + " " + highestIQrobot.secondName + ".");
 
 	//4. Select the robot with the smallest serial number and highlight it in purple, Also, print it's name to the console
+	var smallestSerialNumber = Infinity;
+	var smallestSerialRobot;
+	for (i = 0; i < robots.length; i++) {
+		if (robots[i].serialNumber < smallestSerialNumber) { 
+			smallestSerialNumber = robots[i].serialNumber;
+			smallestSerialRobot = robots[i];
+		}
+	}
+	highlight(smallestSerialRobot, 128, 0, 128);
+	console.log("//4. Select the robot with the smallest serial number and highlight it in purple. Also, print its name to the console.");
+	console.log("The robot with the smallest serial number is " + smallestSerialRobot.firstName + " " + smallestSerialRobot.secondName + ".");
 
 	//5. Find the robot who want to "destroy humanity" highlight it in red. Also, print it's name to the console
 
