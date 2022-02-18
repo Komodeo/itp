@@ -141,6 +141,10 @@ function StopCriminal(car_obj) {
 	 - set the Apprehending_Criminal property of Investigator_Car to true.
 	 - set the Accel_Amt properties of both vehicles to zero.
 	*/
+	car_obj.isApprehended = true;
+	Investigator_Car.Apprehending_Criminal = true;
+	car_obj.Accel_Amt = 0;
+	Investigator_Car.Accel_Amt = 0;
 }
 
 
