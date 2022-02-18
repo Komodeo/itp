@@ -91,7 +91,14 @@ function setup() {
 	console.log("The robot who wants to destroy humanity is " + rogueRobot.firstName + " " + rogueRobot.secondName + ".");
 
 	//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print it's name to the console
-
+	console.log("//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print its name to the console.");
+	console.log("The following robots have faces narrower than 70:");
+	for (i = 0; i < robots.length; i++) {
+		if (robots[i].physical.headWidth < 70) {
+			highlight(robots[i], 255, 255, 0);
+			console.log(robots[i].firstName + " " + robots[i].secondName);
+		}
+	}
 }
 
 function highlight(robot, r, g, b) {
