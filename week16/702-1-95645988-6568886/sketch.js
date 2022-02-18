@@ -49,6 +49,13 @@ function change_lanes(target_vehicle) {
 	 - finally you should return target_vehicle at the end of the function.
 	 hint: You will need to modify the x property of target_vehicle.
 	*/
+	if (target_vehicle.x == lanePositionA) {
+		target_vehicle.x = lanePositionB;
+	}
+	else {
+		target_vehicle.x = lanePositionA;
+	}
+	return target_vehicle;
 }
 
 
