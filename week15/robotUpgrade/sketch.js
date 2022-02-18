@@ -77,6 +77,18 @@ function setup() {
 	console.log("The robot with the smallest serial number is " + smallestSerialRobot.firstName + " " + smallestSerialRobot.secondName + ".");
 
 	//5. Find the robot who want to "destroy humanity" highlight it in red. Also, print it's name to the console
+	var rogueRobot;
+	for (i = 0; i < robots.length; i++) { 
+		for (j = 0; j < robots[i].abilities.length; j++) {
+			if (robots[i].abilities[j] == "destroy humanity") {
+				rogueRobot = robots[i];
+				break;
+			}
+		}
+	}
+	highlight(rogueRobot, 255, 0, 0);
+	console.log("//5. Find the robot who wants to destroy humanity. Highlight it in red. Also, print its name to the console.");
+	console.log("The robot who wants to destroy humanity is " + rogueRobot.firstName + " " + rogueRobot.secondName + ".");
 
 	//6. Find any robot whose face is narrower than 70 and highlight it in yellow. Also, print it's name to the console
 
