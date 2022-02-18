@@ -30,7 +30,7 @@ I remember walking down the street and then I saw them. I remember they had a bu
 */
 
 var suspectList = [
-	{ 
+	{
 		"name": "RANDEE PHINNEY",
 		"gender": "male",
 		"tattoo": "dark black",
@@ -40,7 +40,7 @@ var suspectList = [
 		"weight": 66,
 		"height": 155
 	},
-	{ 
+	{
 		"name": "LINETTE MAUBERT",
 		"gender": "male",
 		"tattoo": "chinese lettering",
@@ -50,7 +50,7 @@ var suspectList = [
 		"weight": 79,
 		"height": 181
 	},
-	{ 
+	{
 		"name": "JESUS JACQUELIN",
 		"gender": "female",
 		"tattoo": "ox",
@@ -60,7 +60,7 @@ var suspectList = [
 		"weight": 73,
 		"height": 170
 	},
-	{ 
+	{
 		"name": "PIERRE SYMMES",
 		"gender": "female",
 		"tattoo": "facial",
@@ -70,7 +70,7 @@ var suspectList = [
 		"weight": 71,
 		"height": 162
 	},
-	{ 
+	{
 		"name": "BRIDGET TINTLE",
 		"gender": "male",
 		"tattoo": "bull",
@@ -80,7 +80,7 @@ var suspectList = [
 		"weight": 82,
 		"height": 176
 	},
-	{ 
+	{
 		"name": "DRUSILLA DAVISWOOD",
 		"gender": "female",
 		"tattoo": "jellyfish",
@@ -90,7 +90,7 @@ var suspectList = [
 		"weight": 69,
 		"height": 165
 	},
-	{ 
+	{
 		"name": "LESLEY FORSLIN",
 		"gender": "female",
 		"tattoo": "big arrow",
@@ -106,28 +106,50 @@ var myFont;
 var backgroundImg;
 
 function preload() {
-  myFont = loadFont('SpecialElite.ttf');
-  backgroundImg = loadImage("Background.png");
+	myFont = loadFont('SpecialElite.ttf');
+	backgroundImg = loadImage("Background.png");
 }
 
-function setup()
-{
-	createCanvas(640,480);
+function setup() {
+	createCanvas(640, 480);
 	textFont(myFont);
 }
 
 // Declare your function here
 
+function matchSuspect(suspectObj) {
+	var matches = 0;
+	if (suspectObj.tattoo == "bull") {
+		matches++;
+	}
+	if (suspectObj.hair == "ginger") {
+		matches++;
+	}
+	if (suspectObj.age >= 36 && suspectObj.age <= 72) {
+		matches++;
+	}
+	if (suspectObj.glasses == "black") {
+		matches++;
+	}
+	if (suspectObj.height >= 165 && suspectObj.height <= 192) {
+		matches++;
+	}
+	if (suspectObj.gender == "male") {
+		matches++;
+	}
+	if (suspectObj.weight >= 78 && suspectObj.weight <= 85) {
+		matches++;
+	}
+	return matches;
+}
 
+function draw() {
+	//You don't need to alter this code
+	image(backgroundImg, 0, 0);
 
-function draw()
-{
-  //You don't need to alter this code
-  image(backgroundImg, 0, 0);
-
-  for(let i = 0 ; i < suspectList.length; i++){
-    let matchingProperties = matchSuspect(suspectList[i]);
-    fill(50 * matchingProperties,250 - (50 * matchingProperties),0);
-    text("found " + matchingProperties + " matching properties for " + suspectList[i].name, 60, 60 + i * 20);
-  }
+	for (let i = 0; i < suspectList.length; i++) {
+		let matchingProperties = matchSuspect(suspectList[i]);
+		fill(50 * matchingProperties, 250 - (50 * matchingProperties), 0);
+		text("found " + matchingProperties + " matching properties for " + suspectList[i].name, 60, 60 + i * 20);
+	}
 }
