@@ -33,7 +33,7 @@ function setup() {
 	//add your selection code here:
 
 	//1. Print all the robot names to the console - first name followed by surname
-	console.log("//1. Print all the robot names to the console - first name followed by surname");
+	console.log("//1. Print all the robot names to the console. First name followed by surname.");
 	for (i = 0; i < robots.length; i++) {
 		console.log(robots[i].firstName + " " + robots[i].secondName);
 		//2. Add to the above so it stops printing names if you find a robot with the surname Katan. Highlight the robot in green
@@ -45,6 +45,17 @@ function setup() {
 	}
 
 	//3. Select the robot with the highest IQ and highlight it in blue. Also, print it's name to the console
+	var highestIQ = 0;
+	var highestIQrobot;
+	for (i = 0; i < robots.length; i++) {
+		if (robots[i].iq > highestIQ) {
+			highestIQ = robots[i].iq;
+			highestIQrobot = robots[i];
+		}
+	}
+	highlight(highestIQrobot, 0, 0, 255);
+	console.log("//3. Select the robot with the highest IQ and highlight it in blue. Also, print its name to the console.");
+	console.log("The robot with the highest IQ is " + highestIQrobot.firstName + " " + highestIQrobot.secondName + ".");
 
 	//4. Select the robot with the smallest serial number and highlight it in purple, Also, print it's name to the console
 
