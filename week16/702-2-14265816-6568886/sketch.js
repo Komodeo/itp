@@ -77,6 +77,9 @@ function Car_IsAtSide(target_vehicle) {
 	 - determine if target_vehicleis parallel with detective_car.
 	 - if target_vehicle is found to be parallel to detective_car then return target_vehicle.
 	 - cars are considered parallel if the absolute difference between their dist_amnt properties is less than 25 px and they have non-matching pos_x properties	*/
+	if (detective_car.pos_x != target_vehicle.pos_x && abs(detective_car.dist_amnt - target_vehicle.dist_amnt) < 25) {
+		return target_vehicle;
+	}
 }
 
 
@@ -89,6 +92,11 @@ function Detect_Assailant() {
 	 - if a match is found then the object of the car in question is returned.
 	 - otherwise return false.
 	*/
+	for (i = 0; i < carObjectData.length; i++) {
+		if(Car_IsAtSide(carObjectData[i]) && carObjectData[i].licence_plate == "QJXZE5") {
+			return carObjectData[i];
+		}
+	}
 }
 
 
