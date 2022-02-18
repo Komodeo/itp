@@ -118,6 +118,19 @@ function FollowingCriminal() {
 	 - if a positive result is returned it should check to see if the Number_Plate property of that car matches that of criminal.
 	 - for a match, StopCriminal should be called, otherwise call CrossLanes.
 	*/
+	var aheadCar = SearchVehicleIsAhead(Investigator_Car);
+	if (Investigator_Car.Tailing_Criminal) {
+		Investigator_Car.Accel_Amt *= 1.001;
+		Investigator_Car.Accel_Amt = min(Investigator_Car.Accel_Amt, 6);
+		if (aheadCar) {
+			if (aheadCar.Number_Plate == "EZP6IQ") {
+				StopCriminal(aheadCar);
+			}
+			else {
+				CrossLanes(Investigator_Car);
+			}
+		}
+	}
 }
 
 
