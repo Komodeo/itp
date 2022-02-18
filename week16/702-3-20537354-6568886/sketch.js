@@ -49,6 +49,12 @@ function CrossLanes(car) {
 	 - use Lane_Coordinate_A and Lane_Coordinate_B to effect the change.
 	 hint: You will need to modify the X_Coordinate property of car.
 	*/
+	if (car.X_Coordinate == Lane_Coordinate_A) {
+		car.X_Coordinate = Lane_Coordinate_B;
+	}
+	else {
+		car.X_Coordinate = Lane_Coordinate_A;
+	}
 }
 
 
