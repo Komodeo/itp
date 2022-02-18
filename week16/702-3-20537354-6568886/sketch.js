@@ -26,8 +26,7 @@ VehicleObject_Array to understand their properties.
 
 ///////////////////////// HELPER FUNCTIONS /////////////////////
 
-function MoveVehicle()
-{
+function MoveVehicle() {
 	/*
 	This function should do the following: 
 	 - increment Investigator_Car's Miles_Amnt property by its Accel_Amt property 
@@ -36,11 +35,13 @@ function MoveVehicle()
 	 - call the TurnoverCar_motor function passing Investigator_Car as an argument
 	*/
 	Investigator_Car.Miles_Amnt += Investigator_Car.Accel_Amt;
+	Investigator_Car.Rumble_Amount += random(-0.09, 0.09);
+	Investigator_Car.Rumble_Amount = constrain(Investigator_Car.Rumble_Amount, 0.06, 0.95);
+	TurnoverCar_motor(Investigator_Car);
 }
 
 
-function CrossLanes(car)
-{
+function CrossLanes(car) {
 	/*
 	This function should do the following: 
 	 - move car from one lane to the other.
@@ -51,8 +52,7 @@ function CrossLanes(car)
 }
 
 
-function SearchVehicleIsAhead( target_car )
-{
+function SearchVehicleIsAhead(target_car) {
 	/*
 	This function should do the following: 
 	 - determine if target_car is in the same lane and less than 200px behind any of the cars in VehicleObject_Array.
@@ -63,8 +63,7 @@ function SearchVehicleIsAhead( target_car )
 }
 
 
-function CheckVehicleIsParallel( target_vehicle )
-{
+function CheckVehicleIsParallel(target_vehicle) {
 	/*
 	This function should do the following: 
 	 - traverse VehicleObject_Array and determine if any of the cars are parallel with target_vehicle.
@@ -73,8 +72,7 @@ function CheckVehicleIsParallel( target_vehicle )
 }
 
 
-function FindCriminal()
-{
+function FindCriminal() {
 	/*
 	This function should do the following: 
 	 - Check cars passing parallel to Investigator_Car to see if they match the Number_Plate property in the criminal description.
@@ -86,8 +84,7 @@ function FindCriminal()
 }
 
 
-function FollowingCriminal()
-{
+function FollowingCriminal() {
 	/*
 	This function should do the following: 
 	 - only operate if the Tailing_Criminal property of Investigator_Car is true.
@@ -100,8 +97,7 @@ function FollowingCriminal()
 }
 
 
-function StopCriminal(car_obj)
-{
+function StopCriminal(car_obj) {
 	/*
 	This function should do the following: 
 	 - set the isApprehended property of the car at the index of car_obj to true.
@@ -123,13 +119,12 @@ var carImages = {};
 var criminal;
 
 var VehicleObject_Array = [
-{ X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: -200, Car_Model: 'blueCar', Number_Plate: 'M5W9H1', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 200, Car_Model: 'blueCar', Number_Plate: 'VQT5YR', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 600, Car_Model: 'blueCar', Number_Plate: '1VAXW3', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 1000, Car_Model: 'blueCar', Number_Plate: '7E68FR', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 1400, Car_Model: 'whiteCar', Number_Plate: 'T1WZSG', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 1800, Car_Model: 'whiteCar', Number_Plate: 'J6Y8Q6', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 2200, Car_Model: 'blueCar', Number_Plate: 'LH2JBM', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 2600, Car_Model: 'redCar', Number_Plate: 'UB1QT7', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 3000, Car_Model: 'greenCar', Number_Plate: 'G9TAAX', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 3400, Car_Model: 'greenCar', Number_Plate: 'HWXUZ9', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 3800, Car_Model: 'redCar', Number_Plate: 'EZP6IQ', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 4200, Car_Model: 'redCar', Number_Plate: '7XRZOU', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 4600, Car_Model: 'greenCar', Number_Plate: 'F5L0ZZ', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 5000, Car_Model: 'redCar', Number_Plate: 'X3PTQQ', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 5400, Car_Model: 'greenCar', Number_Plate: 'KENB06', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 5800, Car_Model: 'greenCar', Number_Plate: '3VMCPB', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 6200, Car_Model: 'redCar', Number_Plate: '1KEOPR', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 6600, Car_Model: 'greenCar', Number_Plate: 'FD3TUV', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 7000, Car_Model: 'greenCar', Number_Plate: 'XUHYMO', Accel_Amt: 2, exhaust: [  ]} , { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 7400, Car_Model: 'whiteCar', Number_Plate: 'NRNNKV', Accel_Amt: 2, exhaust: [  ]} 
+	{ X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: -200, Car_Model: 'blueCar', Number_Plate: 'M5W9H1', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 200, Car_Model: 'blueCar', Number_Plate: 'VQT5YR', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 600, Car_Model: 'blueCar', Number_Plate: '1VAXW3', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 1000, Car_Model: 'blueCar', Number_Plate: '7E68FR', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 1400, Car_Model: 'whiteCar', Number_Plate: 'T1WZSG', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 1800, Car_Model: 'whiteCar', Number_Plate: 'J6Y8Q6', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 2200, Car_Model: 'blueCar', Number_Plate: 'LH2JBM', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 2600, Car_Model: 'redCar', Number_Plate: 'UB1QT7', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 3000, Car_Model: 'greenCar', Number_Plate: 'G9TAAX', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 3400, Car_Model: 'greenCar', Number_Plate: 'HWXUZ9', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 3800, Car_Model: 'redCar', Number_Plate: 'EZP6IQ', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 4200, Car_Model: 'redCar', Number_Plate: '7XRZOU', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 4600, Car_Model: 'greenCar', Number_Plate: 'F5L0ZZ', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 5000, Car_Model: 'redCar', Number_Plate: 'X3PTQQ', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 5400, Car_Model: 'greenCar', Number_Plate: 'KENB06', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 5800, Car_Model: 'greenCar', Number_Plate: '3VMCPB', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 300, Y_Coordinate: 0, Miles_Amnt: 6200, Car_Model: 'redCar', Number_Plate: '1KEOPR', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 6600, Car_Model: 'greenCar', Number_Plate: 'FD3TUV', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 7000, Car_Model: 'greenCar', Number_Plate: 'XUHYMO', Accel_Amt: 2, exhaust: [] }, { X_Coordinate: 500, Y_Coordinate: 0, Miles_Amnt: 7400, Car_Model: 'whiteCar', Number_Plate: 'NRNNKV', Accel_Amt: 2, exhaust: [] }
 ];
 
 
 
-function preload()
-{
+function preload() {
 
 	var carTypes = [
 		"detective",
@@ -139,15 +134,13 @@ function preload()
 		"whiteCar",
 	];
 
-	for(var i = 0; i < carTypes.length; i++)
-	{
+	for (var i = 0; i < carTypes.length; i++) {
 		carImages[carTypes[i]] = loadImage("cars/" + carTypes[i] + ".png");
 	}
 }
 
-function setup()
-{
-	createCanvas(800,800);
+function setup() {
+	createCanvas(800, 800);
 	textSize(30);
 	textAlign(CENTER);
 
@@ -156,9 +149,9 @@ function setup()
 	Lane_Coordinate_A = 300;
 	Lane_Coordinate_B = 500;
 
-	Investigator_Car = 
+	Investigator_Car =
 	{
-		X_Coordinate: roadLeftEdge + roadWidth/4,
+		X_Coordinate: roadLeftEdge + roadWidth / 4,
 		Y_Coordinate: 550,
 		Miles_Amnt: 0,
 		Accel_Amt: 3,
@@ -175,20 +168,17 @@ function setup()
 
 
 
-function draw()
-{
+function draw() {
 	background(0);
 
 	drawRoad();
 	drawCars();
 
-	if(criminal)
-	{
-		if(criminal.isApprehended)
-		{
+	if (criminal) {
+		if (criminal.isApprehended) {
 			fill(255);
 
-			text("criminal isApprehended!", width/2, height/2);
+			text("criminal isApprehended!", width / 2, height / 2);
 		}
 
 	}
@@ -196,17 +186,15 @@ function draw()
 
 	////////////////////// HANDLE DETECTIVE /////////////////////////
 
-	if(!Investigator_Car.Tailing_Criminal&& !Investigator_Car.Apprehending_Criminal)
-	{
+	if (!Investigator_Car.Tailing_Criminal && !Investigator_Car.Apprehending_Criminal) {
 		MoveVehicle();
-		var b2b = SearchVehicleIsAhead( Investigator_Car );
-		if(b2b)CrossLanes(Investigator_Car);
+		var b2b = SearchVehicleIsAhead(Investigator_Car);
+		if (b2b) CrossLanes(Investigator_Car);
 		var a = FindCriminal();
-		if(a != false)criminal = a;
-		if(criminal)Investigator_Car.Tailing_Criminal = true;
+		if (a != false) criminal = a;
+		if (criminal) Investigator_Car.Tailing_Criminal = true;
 	}
-	else if(!Investigator_Car.Apprehending_Criminal)
-	{
+	else if (!Investigator_Car.Apprehending_Criminal) {
 		FollowingCriminal();
 		MoveVehicle();
 	}
@@ -214,16 +202,12 @@ function draw()
 
 	////////////////////// HANDLE ASSAILANT /////////////////////////
 
-	if(criminal)
-	{
-		if(!criminal.isApprehended)
-		{
+	if (criminal) {
+		if (!criminal.isApprehended) {
 			criminal.Accel_Amt = 5;
-			var b2b = SearchVehicleIsAhead( criminal );
-			if(b2b)
-			{
-				if(b2b.Number_Plate != criminal.Number_Plate)
-				{
+			var b2b = SearchVehicleIsAhead(criminal);
+			if (b2b) {
+				if (b2b.Number_Plate != criminal.Number_Plate) {
 					CrossLanes(criminal);
 				}
 			}
@@ -233,21 +217,15 @@ function draw()
 
 	//////////////////////HANDLE THE OTHER CARS//////////////////////
 
-	for(var i = 0; i < VehicleObject_Array.length; i++)
-	{
+	for (var i = 0; i < VehicleObject_Array.length; i++) {
 		VehicleObject_Array[i].Miles_Amnt += VehicleObject_Array[i].Accel_Amt;
 		VehicleObject_Array[i].Y_Coordinate = Investigator_Car.Y_Coordinate - VehicleObject_Array[i].Miles_Amnt + Investigator_Car.Miles_Amnt;
 
-		if(criminal)
-		{
-			if(criminal.isApprehended)
-			{
-				if(VehicleObject_Array[i].X_Coordinate==Investigator_Car.X_Coordinate)
-				{
-					if(VehicleObject_Array[i].Miles_Amnt<Investigator_Car.Miles_Amnt)
-					{
-						if(VehicleObject_Array[i].Miles_Amnt-Investigator_Car.Miles_Amnt < 200)
-						{
+		if (criminal) {
+			if (criminal.isApprehended) {
+				if (VehicleObject_Array[i].X_Coordinate == Investigator_Car.X_Coordinate) {
+					if (VehicleObject_Array[i].Miles_Amnt < Investigator_Car.Miles_Amnt) {
+						if (VehicleObject_Array[i].Miles_Amnt - Investigator_Car.Miles_Amnt < 200) {
 							CrossLanes(VehicleObject_Array[i]);
 						}
 					}
@@ -261,44 +239,39 @@ function draw()
 
 /////////////////////////DRAWING FUNCTIONS////////////////////////
 
-function drawRoad()
-{
+function drawRoad() {
 	stroke(100);
 	fill(50);
-	rect(roadLeftEdge,0,roadWidth,800);
+	rect(roadLeftEdge, 0, roadWidth, 800);
 	stroke(255);
 
-	for(var i = -1; i < 20; i++)
-	{
+	for (var i = -1; i < 20; i++) {
 		line(
-		roadLeftEdge + roadWidth/2 , i * 100 + (Investigator_Car.Miles_Amnt%100),
-		roadLeftEdge + roadWidth/2 , i * 100 + 70 + (Investigator_Car.Miles_Amnt%100)
+			roadLeftEdge + roadWidth / 2, i * 100 + (Investigator_Car.Miles_Amnt % 100),
+			roadLeftEdge + roadWidth / 2, i * 100 + 70 + (Investigator_Car.Miles_Amnt % 100)
 		);
 	}
 }
 
-function drawCars()
-{
+function drawCars() {
 	//draw the detective car
 
 	drawExhaust(Investigator_Car);
 	image
-	(
-		carImages["detective"],
-		Investigator_Car.X_Coordinate - carImages["detective"].width/2 + random(-Investigator_Car.Rumble_Amount, Investigator_Car.Rumble_Amount),
-		Investigator_Car.Y_Coordinate + random(-Investigator_Car.Rumble_Amount, Investigator_Car.Rumble_Amount)
-	);
+		(
+			carImages["detective"],
+			Investigator_Car.X_Coordinate - carImages["detective"].width / 2 + random(-Investigator_Car.Rumble_Amount, Investigator_Car.Rumble_Amount),
+			Investigator_Car.Y_Coordinate + random(-Investigator_Car.Rumble_Amount, Investigator_Car.Rumble_Amount)
+		);
 
 	//draw all other cars
 
-	for(var i = 0; i < VehicleObject_Array.length; i ++)
-	{
-		if(VehicleObject_Array[i].Y_Coordinate < height && VehicleObject_Array[i].Y_Coordinate > -height/2)
-		{
+	for (var i = 0; i < VehicleObject_Array.length; i++) {
+		if (VehicleObject_Array[i].Y_Coordinate < height && VehicleObject_Array[i].Y_Coordinate > -height / 2) {
 			image(
-			carImages[VehicleObject_Array[i].Car_Model],
-			VehicleObject_Array[i].X_Coordinate - carImages[VehicleObject_Array[i].Car_Model].width/2,
-			VehicleObject_Array[i].Y_Coordinate
+				carImages[VehicleObject_Array[i].Car_Model],
+				VehicleObject_Array[i].X_Coordinate - carImages[VehicleObject_Array[i].Car_Model].width / 2,
+				VehicleObject_Array[i].Y_Coordinate
 			);
 			TurnoverCar_motor(VehicleObject_Array[i]);
 
@@ -308,35 +281,30 @@ function drawCars()
 
 }
 
-function TurnoverCar_motor(car)
-{
+function TurnoverCar_motor(car) {
 
-	car.exhaust.push({size: 2, x: car.X_Coordinate, y: car.Y_Coordinate + carImages[car.Car_Model].height});
+	car.exhaust.push({ size: 2, x: car.X_Coordinate, y: car.Y_Coordinate + carImages[car.Car_Model].height });
 
-	for(var i = car.exhaust.length -1; i >= 0 ; i--)
-	{
+	for (var i = car.exhaust.length - 1; i >= 0; i--) {
 
-		car.exhaust[i].y  += max(0.75, car.Accel_Amt/3);
-		if(car.Car_Model != "detective")car.exhaust[i].y += (Investigator_Car.Accel_Amt - car.Accel_Amt);
-		car.exhaust[i].x += random(-1,1);
+		car.exhaust[i].y += max(0.75, car.Accel_Amt / 3);
+		if (car.Car_Model != "detective") car.exhaust[i].y += (Investigator_Car.Accel_Amt - car.Accel_Amt);
+		car.exhaust[i].x += random(-1, 1);
 		car.exhaust[i].size += 0.5;
 
-		if(car.exhaust[i].y  > height || car.exhaust[i].y < 0)
-		{
-			car.exhaust.splice(i,1);
+		if (car.exhaust[i].y > height || car.exhaust[i].y < 0) {
+			car.exhaust.splice(i, 1);
 		}
 	}
 }
 
 
-function drawExhaust(car)
-{
-		noStroke();
-		for(var i = 0; i < car.exhaust.length; i++)
-		{
-				var alpha = map(car.exhaust[i].size, 0, 40, 50,0);
-				fill(125,alpha);
-				ellipse(car.exhaust[i].x + 20, car.exhaust[i].y , car.exhaust[i].size);
+function drawExhaust(car) {
+	noStroke();
+	for (var i = 0; i < car.exhaust.length; i++) {
+		var alpha = map(car.exhaust[i].size, 0, 40, 50, 0);
+		fill(125, alpha);
+		ellipse(car.exhaust[i].x + 20, car.exhaust[i].y, car.exhaust[i].size);
 
-		}
+	}
 }
