@@ -123,7 +123,7 @@ function setup()
 // Declare both your functions here
 
 function checkSuspectTraits(suspectObj){
-	var matches;
+	var matches = 0;
 	if (suspectObj.age >= 38 && suspectObj.age <= 72) {
 		matches++;
 	}
@@ -146,6 +146,19 @@ function checkSuspectTraits(suspectObj){
 		matches++;
 	}
 	return matches;
+}
+
+function findGuilty(){
+	var guiltiestAmount = 0;
+	var guiltiestSuspect;
+	for (i = 0; i < suspectList.length; i++) {
+		var suspectGuiltiness = checkSuspectTraits(suspectList[i]);
+		if (suspectGuiltiness > guiltiestAmount) {
+			guiltiestAmount = suspectGuiltiness;
+			guiltiestSuspect = suspectList[i];
+		}
+	}
+	return guiltiestSuspect;
 }
 
 function draw()
