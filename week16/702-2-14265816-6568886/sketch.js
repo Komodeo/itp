@@ -65,6 +65,9 @@ function SearchCar_Ahead(vehicleA, vehicleB) {
 	 - do this by comparing the two cars' dist_amnt properties
 	 - if these requirements are met then return true. Otherwise return false.
 	*/
+	if (vehicleA.pos_x == vehicleB.pos_x && vehicleB.dist_amnt - vehicleA.dist_amnt > 0 && vehicleB.dist_amnt - vehicleA.dist_amnt < 200) {
+		return true;
+	}
 }
 
 
