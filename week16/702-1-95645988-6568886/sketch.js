@@ -66,6 +66,10 @@ function vehicle_ahead(targetCarA, targetCarB) {
 	 - do this by comparing the two cars' kms_amnt properties
 	 - if these requirements are met then return targetCarB. Otherwise return false.
 	*/
+	if ((targetCarA.x == targetCarB.x) && ((targetCarB.kms_amnt - targetCarA.kms_amnt) < 200)) {
+		return targetCarB;
+	}
+	return false;
 }
 
 
