@@ -49,6 +49,12 @@ function Swap_Lanes(car) {
 	 - use lane_posA and lane_posB to effect the change.
 	 hint: You will need to modify the pos_x property of car.
 	*/
+	if (car.pos_x == lane_posA) {
+		car.pos_x = lane_posB;
+	}
+	else {
+		car.pos_x = lane_posA;
+	}
 }
 
 
