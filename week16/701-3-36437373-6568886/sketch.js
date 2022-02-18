@@ -122,7 +122,31 @@ function setup()
 
 // Declare both your functions here
 
-
+function checkSuspectTraits(suspectObj){
+	var matches;
+	if (suspectObj.age >= 38 && suspectObj.age <= 72) {
+		matches++;
+	}
+	if (suspectObj.height >= 151 && suspectObj.height <= 190) {
+		matches++;
+	}
+	if (suspectObj.hair == "red") {
+		matches++;
+	}
+	if (suspectObj.weight >= 69 && suspectObj.weight <= 72) {
+		matches++;
+	}
+	if (suspectObj.item == "red necktie") {
+		matches++;
+	}
+	if (suspectObj.tattoo == "dark black") {
+		matches++;
+	}
+	if (suspectObj.expression == "empty") {
+		matches++;
+	}
+	return matches;
+}
 
 function draw()
 {
