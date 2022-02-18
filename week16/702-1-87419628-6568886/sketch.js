@@ -64,11 +64,8 @@ function SearchIsAhead(target_car_a, target_car_b) {
 	 - do this by comparing the two cars' kms_amnt properties
 	 - if these requirements are met then return the number_plate property for target_car_b. Otherwise return false.
 	*/
-	if (target_car_a.x == target_car_b.x && target_car_b.kms_amnt - target_car_a.kms_amnt < 200) {
+	if ((target_car_a.x == target_car_b.x) && (abs(target_car_b.kms_amnt - target_car_a.kms_amnt) < 200)) {
 		return target_car_b.number_plate;
-	}
-	else {
-		return false;
 	}
 }
 
