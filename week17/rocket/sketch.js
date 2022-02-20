@@ -9,6 +9,7 @@ function setup() {
 	rocket = {
 		x: width / 2,
 		y: baseLine,
+		headSize: 15,
 		thrust: false,
 		moveLeft: false,
 		moveRight: false,
@@ -31,28 +32,8 @@ function setup() {
 		},
 		drawRocket: function () {
 			//draw the rocket
-			fill(180);
-			beginShape();
-			vertex(this.x + 10, this.y + 60);
-			vertex(this.x + 10, this.y + 20);
-			vertex(this.x + 15, this.y);
-			vertex(this.x + 20, this.y + 20);
-			vertex(this.x + 20, this.y + 60);
-			endShape(CLOSE);
 
-			fill(255, 0, 0);
-			beginShape();
-			vertex(this.x, this.y + 60);
-			vertex(this.x + 10, this.y + 40);
-			vertex(this.x + 10, this.y + 60);
-			endShape(CLOSE);
-
-			beginShape();
-			vertex(this.x + 30, this.y + 60);
-			vertex(this.x + 20, this.y + 40);
-			vertex(this.x + 20, this.y + 60);
-			endShape(CLOSE);
-
+			//thrust effect
 			if (this.thrust) {
 				fill(255, 150, 0);
 				beginShape();
@@ -63,6 +44,25 @@ function setup() {
 				vertex(this.x + 20, this.y + 60);
 				endShape(CLOSE);
 			}
+
+			//body
+			fill(180);
+			beginShape();
+			vertex(this.x + 10, this.y + 60);
+			vertex(this.x + 10, this.y + 20);
+			vertex(this.x + 20, this.y + 20);
+			vertex(this.x + 20, this.y + 60);
+			endShape(CLOSE);
+
+			//head
+			ellipse(this.x + 15, this.y + 20, this.headSize);
+
+			//fins//
+			fill(255, 0, 0);
+			//left
+			ellipse(this.x + 5, this.y + 60, this.headSize);		
+			//right
+			ellipse(this.x + 25, this.y + 60, this.headSize);
 		}
 	};
 }
