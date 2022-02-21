@@ -10,24 +10,29 @@ function setup() {
 		x: width / 2,
 		y: baseLine,
 		headSize: 15,
+		upSpeed: 10,
+		downSpeed: 15,
+		lrSpeed: 5,
 		thrust: false,
 		moveLeft: false,
 		moveRight: false,
 		moveRocket: function () {
-			//move the rocket
+			//move the rocket//
+			//thrust up
 			if (this.thrust && this.y > 0) {
-				this.y -= 2;
+				this.y -= this.upSpeed;
 			}
+			//fall down
 			else if (this.y < baseLine) {
-				this.y += 3;
+				this.y += this.downSpeed;
 			}
-
+			//move left
 			if (this.moveLeft && this.x > 0 && this.y != baseLine) {
-				this.x -= 2;
+				this.x -= this.lrSpeed;
 			}
-
+			//move right
 			if (this.moveRight && this.x < width && this.y != baseLine) {
-				this.x += 2;
+				this.x += this.lrSpeed;
 			}
 		},
 		drawRocket: function () {
