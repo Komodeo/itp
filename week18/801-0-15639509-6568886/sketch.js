@@ -32,10 +32,9 @@ crowd[#][#] to update the property
 var crowdImg;
 var spotlight;
 
-var crowd = [[{"x":50,"y":50,"captured":false},{"x":150,"y":50,"captured":false},{"x":250,"y":50,"captured":false},{"x":350,"y":50,"captured":false},{"x":450,"y":50,"captured":false},{"x":550,"y":50,"captured":false},{"x":650,"y":50,"captured":false},{"x":750,"y":50,"captured":false},{"x":850,"y":50,"captured":false},{"x":950,"y":50,"captured":false}],[{"x":50,"y":130,"captured":false},{"x":150,"y":130,"captured":false},{"x":250,"y":130,"captured":false},{"x":350,"y":130,"captured":false},{"x":450,"y":130,"captured":false},{"x":550,"y":130,"captured":false},{"x":650,"y":130,"captured":false},{"x":750,"y":130,"captured":false},{"x":850,"y":130,"captured":false},{"x":950,"y":130,"captured":false}],[{"x":50,"y":210,"captured":false},{"x":150,"y":210,"captured":false},{"x":250,"y":210,"captured":false},{"x":350,"y":210,"captured":false},{"x":450,"y":210,"captured":false},{"x":550,"y":210,"captured":false},{"x":650,"y":210,"captured":false},{"x":750,"y":210,"captured":false},{"x":850,"y":210,"captured":false},{"x":950,"y":210,"captured":false}],[{"x":50,"y":290,"captured":false},{"x":150,"y":290,"captured":false},{"x":250,"y":290,"captured":false},{"x":350,"y":290,"captured":false},{"x":450,"y":290,"captured":false},{"x":550,"y":290,"captured":false},{"x":650,"y":290,"captured":false},{"x":750,"y":290,"captured":false},{"x":850,"y":290,"captured":false},{"x":950,"y":290,"captured":false}],[{"x":50,"y":370,"captured":false},{"x":150,"y":370,"captured":false},{"x":250,"y":370,"captured":false},{"x":350,"y":370,"captured":false},{"x":450,"y":370,"captured":false},{"x":550,"y":370,"captured":false},{"x":650,"y":370,"captured":false},{"x":750,"y":370,"captured":false},{"x":850,"y":370,"captured":false},{"x":950,"y":370,"captured":false}],[{"x":50,"y":450,"captured":false},{"x":150,"y":450,"captured":false},{"x":250,"y":450,"captured":false},{"x":350,"y":450,"captured":false},{"x":450,"y":450,"captured":false},{"x":550,"y":450,"captured":false},{"x":650,"y":450,"captured":false},{"x":750,"y":450,"captured":false},{"x":850,"y":450,"captured":false},{"x":950,"y":450,"captured":false}],[{"x":50,"y":530,"captured":false},{"x":150,"y":530,"captured":false},{"x":250,"y":530,"captured":false},{"x":350,"y":530,"captured":false},{"x":450,"y":530,"captured":false},{"x":550,"y":530,"captured":false},{"x":650,"y":530,"captured":false},{"x":750,"y":530,"captured":false},{"x":850,"y":530,"captured":false},{"x":950,"y":530,"captured":false}],[{"x":50,"y":610,"captured":false},{"x":150,"y":610,"captured":false},{"x":250,"y":610,"captured":false},{"x":350,"y":610,"captured":false},{"x":450,"y":610,"captured":false},{"x":550,"y":610,"captured":false},{"x":650,"y":610,"captured":false},{"x":750,"y":610,"captured":false},{"x":850,"y":610,"captured":false},{"x":950,"y":610,"captured":false}],[{"x":50,"y":690,"captured":false},{"x":150,"y":690,"captured":false},{"x":250,"y":690,"captured":false},{"x":350,"y":690,"captured":false},{"x":450,"y":690,"captured":false},{"x":550,"y":690,"captured":false},{"x":650,"y":690,"captured":false},{"x":750,"y":690,"captured":false},{"x":850,"y":690,"captured":false},{"x":950,"y":690,"captured":false}],[{"x":50,"y":770,"captured":false},{"x":150,"y":770,"captured":false},{"x":250,"y":770,"captured":false},{"x":350,"y":770,"captured":false},{"x":450,"y":770,"captured":false},{"x":550,"y":770,"captured":false},{"x":650,"y":770,"captured":false},{"x":750,"y":770,"captured":false},{"x":850,"y":770,"captured":false},{"x":950,"y":770,"captured":false}]];
+var crowd = [[{ "x": 50, "y": 50, "captured": false }, { "x": 150, "y": 50, "captured": false }, { "x": 250, "y": 50, "captured": false }, { "x": 350, "y": 50, "captured": false }, { "x": 450, "y": 50, "captured": false }, { "x": 550, "y": 50, "captured": false }, { "x": 650, "y": 50, "captured": false }, { "x": 750, "y": 50, "captured": false }, { "x": 850, "y": 50, "captured": false }, { "x": 950, "y": 50, "captured": false }], [{ "x": 50, "y": 130, "captured": false }, { "x": 150, "y": 130, "captured": false }, { "x": 250, "y": 130, "captured": false }, { "x": 350, "y": 130, "captured": false }, { "x": 450, "y": 130, "captured": false }, { "x": 550, "y": 130, "captured": false }, { "x": 650, "y": 130, "captured": false }, { "x": 750, "y": 130, "captured": false }, { "x": 850, "y": 130, "captured": false }, { "x": 950, "y": 130, "captured": false }], [{ "x": 50, "y": 210, "captured": false }, { "x": 150, "y": 210, "captured": false }, { "x": 250, "y": 210, "captured": false }, { "x": 350, "y": 210, "captured": false }, { "x": 450, "y": 210, "captured": false }, { "x": 550, "y": 210, "captured": false }, { "x": 650, "y": 210, "captured": false }, { "x": 750, "y": 210, "captured": false }, { "x": 850, "y": 210, "captured": false }, { "x": 950, "y": 210, "captured": false }], [{ "x": 50, "y": 290, "captured": false }, { "x": 150, "y": 290, "captured": false }, { "x": 250, "y": 290, "captured": false }, { "x": 350, "y": 290, "captured": false }, { "x": 450, "y": 290, "captured": false }, { "x": 550, "y": 290, "captured": false }, { "x": 650, "y": 290, "captured": false }, { "x": 750, "y": 290, "captured": false }, { "x": 850, "y": 290, "captured": false }, { "x": 950, "y": 290, "captured": false }], [{ "x": 50, "y": 370, "captured": false }, { "x": 150, "y": 370, "captured": false }, { "x": 250, "y": 370, "captured": false }, { "x": 350, "y": 370, "captured": false }, { "x": 450, "y": 370, "captured": false }, { "x": 550, "y": 370, "captured": false }, { "x": 650, "y": 370, "captured": false }, { "x": 750, "y": 370, "captured": false }, { "x": 850, "y": 370, "captured": false }, { "x": 950, "y": 370, "captured": false }], [{ "x": 50, "y": 450, "captured": false }, { "x": 150, "y": 450, "captured": false }, { "x": 250, "y": 450, "captured": false }, { "x": 350, "y": 450, "captured": false }, { "x": 450, "y": 450, "captured": false }, { "x": 550, "y": 450, "captured": false }, { "x": 650, "y": 450, "captured": false }, { "x": 750, "y": 450, "captured": false }, { "x": 850, "y": 450, "captured": false }, { "x": 950, "y": 450, "captured": false }], [{ "x": 50, "y": 530, "captured": false }, { "x": 150, "y": 530, "captured": false }, { "x": 250, "y": 530, "captured": false }, { "x": 350, "y": 530, "captured": false }, { "x": 450, "y": 530, "captured": false }, { "x": 550, "y": 530, "captured": false }, { "x": 650, "y": 530, "captured": false }, { "x": 750, "y": 530, "captured": false }, { "x": 850, "y": 530, "captured": false }, { "x": 950, "y": 530, "captured": false }], [{ "x": 50, "y": 610, "captured": false }, { "x": 150, "y": 610, "captured": false }, { "x": 250, "y": 610, "captured": false }, { "x": 350, "y": 610, "captured": false }, { "x": 450, "y": 610, "captured": false }, { "x": 550, "y": 610, "captured": false }, { "x": 650, "y": 610, "captured": false }, { "x": 750, "y": 610, "captured": false }, { "x": 850, "y": 610, "captured": false }, { "x": 950, "y": 610, "captured": false }], [{ "x": 50, "y": 690, "captured": false }, { "x": 150, "y": 690, "captured": false }, { "x": 250, "y": 690, "captured": false }, { "x": 350, "y": 690, "captured": false }, { "x": 450, "y": 690, "captured": false }, { "x": 550, "y": 690, "captured": false }, { "x": 650, "y": 690, "captured": false }, { "x": 750, "y": 690, "captured": false }, { "x": 850, "y": 690, "captured": false }, { "x": 950, "y": 690, "captured": false }], [{ "x": 50, "y": 770, "captured": false }, { "x": 150, "y": 770, "captured": false }, { "x": 250, "y": 770, "captured": false }, { "x": 350, "y": 770, "captured": false }, { "x": 450, "y": 770, "captured": false }, { "x": 550, "y": 770, "captured": false }, { "x": 650, "y": 770, "captured": false }, { "x": 750, "y": 770, "captured": false }, { "x": 850, "y": 770, "captured": false }, { "x": 950, "y": 770, "captured": false }]];
 
-function setup()
-{
+function setup() {
 	createCanvas(1100, 1100);
 
 	crowdImg = loadImage("crowd.png");
@@ -44,12 +43,26 @@ function setup()
 
 
 
-function draw()
-{
+function draw() {
 	image(crowdImg, 0, 0);
 	////////////YOUR CODE GOES HERE////////////////////////
 
-
+	// the 8th row, 5th seat
+	crowd[7][4].captured = true;
+	// the 7th row, 6th seat
+	crowd[6][5].captured = true;
+	// the 5th row, 5th seat
+	crowd[4][4].captured = true;
+	// the 4th row, 3rd seat
+	crowd[3][2].captured = true;
+	// the 4th row, 6th seat
+	crowd[3][5].captured = true;
+	// the 1st row, 8th seat
+	crowd[0][7].captured = true;
+	// the 10th row, 4th seat
+	crowd[9][3].captured = true;
+	// the 4th row, 9th seat
+	crowd[3][8].captured = true;
 
 	///////////DON'T CHANGE ANY CODE BELOW HERE////////////
 	blendMode(BLEND);
@@ -59,17 +72,13 @@ function draw()
 	image(crowdImg, 0, 0);
 }
 
-function highlight()
-{
+function highlight() {
 	fill(255, 0, 0, 100);
 
-	for (var i = 0; i < crowd.length; i++)
-	{
-		for (var j = 0; j < crowd[i].length; j++)
-		{
-			if (crowd[i][j].captured)
-			{
-				image(spotlight, crowd[i][j].x, crowd[i][j].y, 100 , 100 );
+	for (var i = 0; i < crowd.length; i++) {
+		for (var j = 0; j < crowd[i].length; j++) {
+			if (crowd[i][j].captured) {
+				image(spotlight, crowd[i][j].x, crowd[i][j].y, 100, 100);
 			}
 		}
 	}
