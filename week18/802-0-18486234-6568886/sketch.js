@@ -15,49 +15,47 @@ Our targets for this op are a gang of high rolling statisticians. They maintain 
 
 */
 
-var cardDeck = [{"marked":false,"s":"Spades","v":"A"},{"marked":false,"s":"Spades","v":"2"},{"marked":false,"s":"Spades","v":"3"},{"marked":false,"s":"Spades","v":"4"},{"marked":false,"s":"Spades","v":"5"},{"marked":false,"s":"Spades","v":"6"},{"marked":false,"s":"Spades","v":"7"},{"marked":false,"s":"Spades","v":"8"},{"marked":false,"s":"Spades","v":"9"},{"marked":false,"s":"Spades","v":"10"},{"marked":false,"s":"Spades","v":"J"},{"marked":false,"s":"Spades","v":"Q"},{"marked":false,"s":"Spades","v":"K"},{"marked":false,"s":"Clubs","v":"A"},{"marked":false,"s":"Clubs","v":"2"},{"marked":false,"s":"Clubs","v":"3"},{"marked":false,"s":"Clubs","v":"4"},{"marked":false,"s":"Clubs","v":"5"},{"marked":false,"s":"Clubs","v":"6"},{"marked":false,"s":"Clubs","v":"7"},{"marked":false,"s":"Clubs","v":"8"},{"marked":false,"s":"Clubs","v":"9"},{"marked":false,"s":"Clubs","v":"10"},{"marked":false,"s":"Clubs","v":"J"},{"marked":false,"s":"Clubs","v":"Q"},{"marked":false,"s":"Clubs","v":"K"},{"marked":false,"s":"Hearts","v":"A"},{"marked":false,"s":"Hearts","v":"2"},{"marked":false,"s":"Hearts","v":"3"},{"marked":false,"s":"Hearts","v":"4"},{"marked":false,"s":"Hearts","v":"5"},{"marked":false,"s":"Hearts","v":"6"},{"marked":false,"s":"Hearts","v":"7"},{"marked":false,"s":"Hearts","v":"8"},{"marked":false,"s":"Hearts","v":"9"},{"marked":false,"s":"Hearts","v":"10"},{"marked":false,"s":"Hearts","v":"J"},{"marked":false,"s":"Hearts","v":"Q"},{"marked":false,"s":"Hearts","v":"K"},{"marked":false,"s":"Diamonds","v":"A"},{"marked":false,"s":"Diamonds","v":"2"},{"marked":false,"s":"Diamonds","v":"3"},{"marked":false,"s":"Diamonds","v":"4"},{"marked":false,"s":"Diamonds","v":"5"},{"marked":false,"s":"Diamonds","v":"6"},{"marked":false,"s":"Diamonds","v":"7"},{"marked":false,"s":"Diamonds","v":"8"},{"marked":false,"s":"Diamonds","v":"9"},{"marked":false,"s":"Diamonds","v":"10"},{"marked":false,"s":"Diamonds","v":"J"},{"marked":false,"s":"Diamonds","v":"Q"},{"marked":false,"s":"Diamonds","v":"K"}];
+var cardDeck = [{ "marked": false, "s": "Spades", "v": "A" }, { "marked": false, "s": "Spades", "v": "2" }, { "marked": false, "s": "Spades", "v": "3" }, { "marked": false, "s": "Spades", "v": "4" }, { "marked": false, "s": "Spades", "v": "5" }, { "marked": false, "s": "Spades", "v": "6" }, { "marked": false, "s": "Spades", "v": "7" }, { "marked": false, "s": "Spades", "v": "8" }, { "marked": false, "s": "Spades", "v": "9" }, { "marked": false, "s": "Spades", "v": "10" }, { "marked": false, "s": "Spades", "v": "J" }, { "marked": false, "s": "Spades", "v": "Q" }, { "marked": false, "s": "Spades", "v": "K" }, { "marked": false, "s": "Clubs", "v": "A" }, { "marked": false, "s": "Clubs", "v": "2" }, { "marked": false, "s": "Clubs", "v": "3" }, { "marked": false, "s": "Clubs", "v": "4" }, { "marked": false, "s": "Clubs", "v": "5" }, { "marked": false, "s": "Clubs", "v": "6" }, { "marked": false, "s": "Clubs", "v": "7" }, { "marked": false, "s": "Clubs", "v": "8" }, { "marked": false, "s": "Clubs", "v": "9" }, { "marked": false, "s": "Clubs", "v": "10" }, { "marked": false, "s": "Clubs", "v": "J" }, { "marked": false, "s": "Clubs", "v": "Q" }, { "marked": false, "s": "Clubs", "v": "K" }, { "marked": false, "s": "Hearts", "v": "A" }, { "marked": false, "s": "Hearts", "v": "2" }, { "marked": false, "s": "Hearts", "v": "3" }, { "marked": false, "s": "Hearts", "v": "4" }, { "marked": false, "s": "Hearts", "v": "5" }, { "marked": false, "s": "Hearts", "v": "6" }, { "marked": false, "s": "Hearts", "v": "7" }, { "marked": false, "s": "Hearts", "v": "8" }, { "marked": false, "s": "Hearts", "v": "9" }, { "marked": false, "s": "Hearts", "v": "10" }, { "marked": false, "s": "Hearts", "v": "J" }, { "marked": false, "s": "Hearts", "v": "Q" }, { "marked": false, "s": "Hearts", "v": "K" }, { "marked": false, "s": "Diamonds", "v": "A" }, { "marked": false, "s": "Diamonds", "v": "2" }, { "marked": false, "s": "Diamonds", "v": "3" }, { "marked": false, "s": "Diamonds", "v": "4" }, { "marked": false, "s": "Diamonds", "v": "5" }, { "marked": false, "s": "Diamonds", "v": "6" }, { "marked": false, "s": "Diamonds", "v": "7" }, { "marked": false, "s": "Diamonds", "v": "8" }, { "marked": false, "s": "Diamonds", "v": "9" }, { "marked": false, "s": "Diamonds", "v": "10" }, { "marked": false, "s": "Diamonds", "v": "J" }, { "marked": false, "s": "Diamonds", "v": "Q" }, { "marked": false, "s": "Diamonds", "v": "K" }];
 var deck_img;
 var table_img;
 var drawCounter = 0;
 
-function preload()
-{
+function preload() {
 	deck_img = loadImage("deck.png");
 	table_img = loadImage("table.png");
 }
-function setup()
-{
+function setup() {
 	createCanvas(table_img.width, table_img.height);
 	frameRate(30);
 
 
 	//call your selectCards function here
-
+	selectCards();
 }
 
 //write your selectCards function here
+function selectCards() {
+	for (i = 0; i < cardDeck.length; i++) {
+		if (cardDeck[i].s == "Clubs" || cardDeck[i].v == "9") {
+			cardDeck[i].marked = true;
+		}
+	}
+}
 
-
-function draw()
-{
+function draw() {
 	image(table_img, 0, 0);
 
-	if (frameCount % 7 == 0)
-	{
+	if (frameCount % 7 == 0) {
 		drawCounter++;
-		if (drawCounter == 52)
-		{
+		if (drawCounter == 52) {
 			noLoop();
 		}
 	}
-	for (var i = 0; i < drawCounter; i++)
-	{
-		if (cardDeck[i].marked)
-		{
+	for (var i = 0; i < drawCounter; i++) {
+		if (cardDeck[i].marked) {
 			drawCard(cardDeck[i], 400 + i * 18, 230);
 		}
-		else
-		{
+		else {
 			drawCard(cardDeck[i], 400 + i * 18, 250);
 		}
 	}
@@ -66,19 +64,15 @@ function draw()
 }
 
 
-function drawCard(card, x, y)
-{
+function drawCard(card, x, y) {
 
 	var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 	var suits = ["Spades", "Clubs", "Hearts", "Diamonds"];
 
-	for (var i = 0; i < suits.length; i++)
-	{
-		for (var j = 0; j < values.length; j++)
-		{
-			if (card.v == values[j] && card.s == suits[i])
-			{
-			//img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
+	for (var i = 0; i < suits.length; i++) {
+		for (var j = 0; j < values.length; j++) {
+			if (card.v == values[j] && card.s == suits[i]) {
+				//img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
 				image(deck_img, j * 200, i * 300, 200, 300, x, y, 100, 150);
 				break;
 			}
