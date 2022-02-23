@@ -19,68 +19,77 @@ These sharks don’t mess about. One hand, winner takes all. What kind of chief 
 
 */
 
-var playing_cards = [{"type":"Spades","no":"A"},{"type":"Spades","no":"2"},{"type":"Spades","no":"3"},{"type":"Spades","no":"4"},{"type":"Spades","no":"5"},{"type":"Spades","no":"6"},{"type":"Spades","no":"7"},{"type":"Spades","no":"8"},{"type":"Spades","no":"9"},{"type":"Spades","no":"10"},{"type":"Spades","no":"J"},{"type":"Spades","no":"Q"},{"type":"Spades","no":"K"},{"type":"Clubs","no":"A"},{"type":"Clubs","no":"2"},{"type":"Clubs","no":"3"},{"type":"Clubs","no":"4"},{"type":"Clubs","no":"5"},{"type":"Clubs","no":"6"},{"type":"Clubs","no":"7"},{"type":"Clubs","no":"8"},{"type":"Clubs","no":"9"},{"type":"Clubs","no":"10"},{"type":"Clubs","no":"J"},{"type":"Clubs","no":"Q"},{"type":"Clubs","no":"K"},{"type":"Hearts","no":"A"},{"type":"Hearts","no":"2"},{"type":"Hearts","no":"3"},{"type":"Hearts","no":"4"},{"type":"Hearts","no":"5"},{"type":"Hearts","no":"6"},{"type":"Hearts","no":"7"},{"type":"Hearts","no":"8"},{"type":"Hearts","no":"9"},{"type":"Hearts","no":"10"},{"type":"Hearts","no":"J"},{"type":"Hearts","no":"Q"},{"type":"Hearts","no":"K"},{"type":"Diamonds","no":"A"},{"type":"Diamonds","no":"2"},{"type":"Diamonds","no":"3"},{"type":"Diamonds","no":"4"},{"type":"Diamonds","no":"5"},{"type":"Diamonds","no":"6"},{"type":"Diamonds","no":"7"},{"type":"Diamonds","no":"8"},{"type":"Diamonds","no":"9"},{"type":"Diamonds","no":"10"},{"type":"Diamonds","no":"J"},{"type":"Diamonds","no":"Q"},{"type":"Diamonds","no":"K"}];
+var playing_cards = [{ "type": "Spades", "no": "A" }, { "type": "Spades", "no": "2" }, { "type": "Spades", "no": "3" }, { "type": "Spades", "no": "4" }, { "type": "Spades", "no": "5" }, { "type": "Spades", "no": "6" }, { "type": "Spades", "no": "7" }, { "type": "Spades", "no": "8" }, { "type": "Spades", "no": "9" }, { "type": "Spades", "no": "10" }, { "type": "Spades", "no": "J" }, { "type": "Spades", "no": "Q" }, { "type": "Spades", "no": "K" }, { "type": "Clubs", "no": "A" }, { "type": "Clubs", "no": "2" }, { "type": "Clubs", "no": "3" }, { "type": "Clubs", "no": "4" }, { "type": "Clubs", "no": "5" }, { "type": "Clubs", "no": "6" }, { "type": "Clubs", "no": "7" }, { "type": "Clubs", "no": "8" }, { "type": "Clubs", "no": "9" }, { "type": "Clubs", "no": "10" }, { "type": "Clubs", "no": "J" }, { "type": "Clubs", "no": "Q" }, { "type": "Clubs", "no": "K" }, { "type": "Hearts", "no": "A" }, { "type": "Hearts", "no": "2" }, { "type": "Hearts", "no": "3" }, { "type": "Hearts", "no": "4" }, { "type": "Hearts", "no": "5" }, { "type": "Hearts", "no": "6" }, { "type": "Hearts", "no": "7" }, { "type": "Hearts", "no": "8" }, { "type": "Hearts", "no": "9" }, { "type": "Hearts", "no": "10" }, { "type": "Hearts", "no": "J" }, { "type": "Hearts", "no": "Q" }, { "type": "Hearts", "no": "K" }, { "type": "Diamonds", "no": "A" }, { "type": "Diamonds", "no": "2" }, { "type": "Diamonds", "no": "3" }, { "type": "Diamonds", "no": "4" }, { "type": "Diamonds", "no": "5" }, { "type": "Diamonds", "no": "6" }, { "type": "Diamonds", "no": "7" }, { "type": "Diamonds", "no": "8" }, { "type": "Diamonds", "no": "9" }, { "type": "Diamonds", "no": "10" }, { "type": "Diamonds", "no": "J" }, { "type": "Diamonds", "no": "Q" }, { "type": "Diamonds", "no": "K" }];
 var deck_img;
 var table_img;
 var drawCounter = 0;
 
-var hand_to_win = [{"suit":"Spades","n":"K"},{"suit":"Spades","n":"J"},{"suit":"Diamonds","n":"K"},{"suit":"Hearts","n":"J"},{"suit":"Spades","n":"10"}];
-var hand =[];
+var hand_to_win = [{ "suit": "Spades", "n": "K" }, { "suit": "Spades", "n": "J" }, { "suit": "Diamonds", "n": "K" }, { "suit": "Hearts", "n": "J" }, { "suit": "Spades", "n": "10" }];
+var hand = [];
 
-function preload()
-{
+function preload() {
 	deck_img = loadImage("deck.png");
 	table_img = loadImage("table.png");
 }
-function setup()
-{
+function setup() {
 	createCanvas(table_img.width, table_img.height);
 	frameRate(30);
 
 
 	//call your shuffleSeed() function here. Followed by a call to shuffleDeck with the return value of shuffleSeed() as an argument.
+	var seed = shuffleSeed();
+	shuffleDeck(seed);
 
 	//call your buildWinningHand function here
-
+	buildWinningHand();
 }
 
 //write your buildWinningHand function here
-
-//write your shuffleSeed() function here.
-
-/////////////////////DON'T CHANGE ANYTHING BELOW HERE/////////////////////////
-function shuffleDeck(shuffleSeed)
-{
-		//shuffle the deck by rotating the cards location with the values in
-		//shuffleSeed. Repeat this a random number of times between 20 and 50
-    var shuffleIterations = parseInt(random(20, 50));
-    for(var i = 0; i < shuffleIterations; i++)
-    {
-	   for (var j = 0; j < playing_cards.length; j++)
-	   {
-		  var tempCard = playing_cards.splice(j, 1);
-          var newLoc = (j + shuffleSeed[j])%52;
-          playing_cards.splice(newLoc, 0, tempCard[0]);
-	   }
-    }
+function buildWinningHand() {
+	for (h = 0; h < hand_to_win.length; h++) {
+		for (deck = 0; deck < playing_cards.length; deck++) {
+			if (hand_to_win[h].suit == playing_cards[deck].type && hand_to_win[h].n == playing_cards[deck].no) {
+				hand.push(playing_cards[deck]);
+				break;
+			}
+		}
+	}
 }
 
-function draw()
-{
+//write your shuffleSeed() function here.
+function shuffleSeed() {
+	var seedArr = [];
+	for (i = 0; i < 52; i++) {
+		seedArr.push(round(random(1, 63)));
+	}
+	return seedArr;
+}
+
+/////////////////////DON'T CHANGE ANYTHING BELOW HERE/////////////////////////
+function shuffleDeck(shuffleSeed) {
+	//shuffle the deck by rotating the cards location with the values in
+	//shuffleSeed. Repeat this a random number of times between 20 and 50
+	var shuffleIterations = parseInt(random(20, 50));
+	for (var i = 0; i < shuffleIterations; i++) {
+		for (var j = 0; j < playing_cards.length; j++) {
+			var tempCard = playing_cards.splice(j, 1);
+			var newLoc = (j + shuffleSeed[j]) % 52;
+			playing_cards.splice(newLoc, 0, tempCard[0]);
+		}
+	}
+}
+
+function draw() {
 	image(table_img, 0, 0);
 
-	if (frameCount % 7 == 0)
-	{
+	if (frameCount % 7 == 0) {
 		drawCounter++;
-		if (drawCounter == 5)
-		{
+		if (drawCounter == 5) {
 			noLoop();
 		}
 	}
-	for (var i = 0; i < drawCounter; i++)
-	{
-		if( i < hand.length)
-		{
+	for (var i = 0; i < drawCounter; i++) {
+		if (i < hand.length) {
 			drawCard(hand[i], 880 + i * 18, 750);
 		}
 	}
@@ -89,19 +98,15 @@ function draw()
 }
 
 
-function drawCard(card, x, y)
-{
+function drawCard(card, x, y) {
 
 	var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 	var suits = ["Spades", "Clubs", "Hearts", "Diamonds"];
 
-	for (var i = 0; i < suits.length; i++)
-	{
-		for (var j = 0; j < values.length; j++)
-		{
-			if (card.no == values[j] && card.type == suits[i])
-			{
-			//img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
+	for (var i = 0; i < suits.length; i++) {
+		for (var j = 0; j < values.length; j++) {
+			if (card.no == values[j] && card.type == suits[i]) {
+				//img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
 				image(deck_img, j * 200, i * 300, 200, 300, x, y, 100, 150);
 				break;
 			}
