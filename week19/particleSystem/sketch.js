@@ -1,3 +1,4 @@
+//construct an individual particle
 function Particle(x, y, xSpeed, ySpeed, size, colour) {
 	this.x = x;
 	this.y = y;
@@ -7,11 +8,13 @@ function Particle(x, y, xSpeed, ySpeed, size, colour) {
 	this.colour = colour;
 	this.age = 0;
 
+	//draw a particle to the screen
 	this.drawParticle = function () {
 		fill(this.colour);
 		ellipse(this.x, this.y, this.size);
 	};
 
+	//update the position and age of a particle
 	this.updateParticle = function () {
 		this.x += this.xSpeed;
 		this.y += this.ySpeed;
@@ -19,6 +22,7 @@ function Particle(x, y, xSpeed, ySpeed, size, colour) {
 	};
 }
 
+//construct the particles array
 function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 	this.x = x;
 	this.y = y;
@@ -32,6 +36,7 @@ function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 
 	this.particles = [];
 
+	//return a new particle
 	this.addParticle = function () {
 		var p = new Particle(
 			random(this.x - 10, this.x + 10),
@@ -44,27 +49,31 @@ function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 		return p;
 	};
 
+	//start emitter with initial particles
 	this.startEmitter = function (startParticles, lifetime) {
 		this.startParticles = startParticles;
 		this.lifetime = lifetime;
 
-		//start emitter with initial particles
 		for (i = 0; i < startParticles; i++) {
 			this.particles.push(this.addParticle());
 		}
 	};
 
+	//iterate through particles and draw to the screen
 	this.updateParticles = function () {
-		//iterate through particles and draw to the screen
 		var deadParticles = 0;
 		for (i = this.particles.length - 1; i >= 0; i--) {
 			this.particles[i].drawParticle();
 			this.particles[i].updateParticle();
+
+			//check for dead particles and delete them
 			if (this.particles[i].age > random(0, this.lifetime)) {
 				this.particles.splice(i, 1);
 				deadParticles++;
 			}
 		}
+
+		//replace dead particles
 		if (deadParticles > 0) {
 			for (i = 0; i < deadParticles; i++) {
 				this.particles.push(this.addParticle());
@@ -73,13 +82,20 @@ function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 	};
 }
 
-var emit;
-
+var emit; //global variable to store particle properties
 function setup() {
 	createCanvas(800, 600);
 
-	emit = new Emitter(width / 2, height - 100, 0, -1, 30, color(200, 0, 200, 100));
-	emit.startEmitter(300, 200);
+	//set particle properties
+	emit = new Emitter(
+		width / 2, //x
+		height - 100, //y
+		0, //xSpeed
+		-1, //ySpeed
+		30, //size
+		color(200, 0, 200, 100)); //colour
+	emit.startEmitter(300, //startParticles
+		200); //lifetime
 }
 
 function draw() {
