@@ -1,15 +1,15 @@
 /*
 Code it from scratch: Robot factory
 
-U​sing the robot drawing code from a previous example, make a robot factory. 
-- C​reate a factory to create multiple robots on the screen at the same time.
-- E​xtend the program so each time the canvas is clicked, a new robot head appears at the cursor.
+Using the robot drawing code from a previous example, make a robot factory. 
+- Create a factory to create multiple robots on the screen at the same time.
+- Extend the program so each time the canvas is clicked, a new robot head appears at the cursor.
 
-I​f you are struggling, go back to the factory pattern video and watch again. 
+If you are struggling, go back to the factory pattern video and watch again. 
 
-I​f you have time when you are done, here are a few ideas to extend your example.
-- R​eimplement the robot factory using a constructor function.
-- A​nimate the robot heads so they bounce around the screen.
+If you have time when you are done, here are a few ideas to extend your example.
+- Reimplement the robot factory using a constructor function.
+- Animate the robot heads so they bounce around the screen.
 */
 
 var robots = [];
@@ -23,7 +23,6 @@ function setup() {
 	for (var i = 0; i < robots.length; i++) {
 		drawRobot(robots[i].physical);
 	}
-
 }
 
 function highlight(robot, r, g, b) {
@@ -114,7 +113,6 @@ function drawRobot(physical) {
 	ellipse(x + physical.headWidth * 0.75, y + 30, 26, 26);
 	point(x + physical.headWidth * 0.75, y + 30);
 
-
 	//robots' noses
 	fill(255, 0, 0);
 	triangle(x + physical.headWidth * 0.5, y + 35, x + physical.headWidth * 0.35, y + 60, x + physical.headWidth * 0.65, y + 60);
@@ -130,4 +128,22 @@ function drawRobot(physical) {
 	vertex(x + physical.headWidth * 0.66, y + 85);
 	vertex(x + physical.headWidth * 0.74, y + 75);
 	endShape();
+}
+
+// - Extend the program so each time the canvas is clicked, a new robot head appears at the cursor.
+function spawnRobot() {
+	var physical =
+	{
+		r: round(random(0, 255)),
+		g: round(random(0, 255)),
+		b: round(random(0, 255)),
+		headWidth: round(random(60, 100)),
+		x: winMouseX - 58,
+		y: winMouseY - 62.5
+	};
+	drawRobot(physical);
+}
+
+function mousePressed() {
+	spawnRobot();
 }
