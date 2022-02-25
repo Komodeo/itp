@@ -8,14 +8,6 @@ function Particle(x, y, xSpeed, ySpeed, size, colour) {
 	this.colour = colour;
 	this.age = 0;
 
-	//randomize color
-	this.colour = color(
-		random(this.colour.levels[0], 255),
-		random(this.colour.levels[1], 165),
-		random(0, this.colour.levels[2]),
-		this.colour.levels[3]
-	);
-
 	//draw a particle to the screen
 	this.drawParticle = function () {
 		fill(this.colour);
@@ -44,16 +36,21 @@ function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 
 	this.particles = [];
 
-	//return a new particle
+	//return a new particle with randomized values
 	this.addParticle = function () {
 		var p = new Particle(
-			random(this.x - 10, this.x + 10),
-			random(this.y - 10, this.y + 10),
-			random(this.xSpeed - 1, this.xSpeed + 1),
-			random(this.ySpeed - 2, this.ySpeed),
-			random(this.size - 4, this.size + 4),
-			this.colour);
-
+			random(this.x - 10, this.x + 10), //randomize x
+			random(this.y - 10, this.y + 10), //randomize y
+			random(this.xSpeed - 1, this.xSpeed + 1), //randomize xSpeed
+			random(this.ySpeed - 2, this.ySpeed), //randomize ySpeed
+			random(this.size - 4, this.size + 4), //randomize size
+			color( //randomize color
+				random(this.colour.levels[0], 255), //red
+				random(this.colour.levels[1], 165), //green
+				random(0, this.colour.levels[2]), //blue
+				this.colour.levels[3] //opacity
+			)
+		);
 		return p;
 	};
 
@@ -102,9 +99,13 @@ function setup() {
 		0, //xSpeed
 		-1, //ySpeed
 		30, //size
-		color(200, 0, 50, 100)); //colour
+		color(200, 0, 50, 100) //colour
+	);
+
+	//set emitter properties
 	emit.startEmitter(1000, //startParticles
-		5000); //lifetime
+		5000 //lifetime
+	);
 }
 
 function draw() {
