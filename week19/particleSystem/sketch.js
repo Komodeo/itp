@@ -8,6 +8,14 @@ function Particle(x, y, xSpeed, ySpeed, size, colour) {
 	this.colour = colour;
 	this.age = 0;
 
+	//randomize color
+	this.colour = color(
+		random(this.colour.levels[0], 255),
+		random(this.colour.levels[1], 165),
+		random(0, this.colour.levels[2]),
+		this.colour.levels[3]
+	);
+
 	//draw a particle to the screen
 	this.drawParticle = function () {
 		fill(this.colour);
@@ -42,7 +50,7 @@ function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 			random(this.x - 10, this.x + 10),
 			random(this.y - 10, this.y + 10),
 			random(this.xSpeed - 1, this.xSpeed + 1),
-			random(this.ySpeed - 1, this.ySpeed + 1),
+			random(this.ySpeed - 2, this.ySpeed),
 			random(this.size - 4, this.size + 4),
 			this.colour);
 
@@ -85,6 +93,7 @@ function Emitter(x, y, xSpeed, ySpeed, size, colour) {
 var emit; //global variable to store particle properties
 function setup() {
 	createCanvas(800, 600);
+	noStroke();
 
 	//set particle properties
 	emit = new Emitter(
@@ -93,9 +102,9 @@ function setup() {
 		0, //xSpeed
 		-1, //ySpeed
 		30, //size
-		color(200, 0, 200, 100)); //colour
-	emit.startEmitter(300, //startParticles
-		200); //lifetime
+		color(200, 0, 50, 100)); //colour
+	emit.startEmitter(1000, //startParticles
+		5000); //lifetime
 }
 
 function draw() {
